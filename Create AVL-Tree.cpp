@@ -77,6 +77,11 @@ node* findmin(node* p) // поиск узла с минимальным ключ
 	return p->left?findmin(p->left):p;
 }
 
+node* findmax(node* p) // поиск узла с максимальным ключом в дереве p
+{
+	return p->right?findmax(p->right):p;
+}	
+
 node* removemin(node* p) // удаление узла с минимальным ключом из дерева p
 {
 	if( p->left==0 )
