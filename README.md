@@ -3,8 +3,8 @@
 В данной работе приводится сравнение указанных выше структур данных, каждая из которых имеет свои преимущества и недостатки, которые будут показаны на практике после тестирования.
 
 # Содержание
-[AVL-Tree](https://github.com/anastasiya0304/Structures/blob/master/Create%20AVL-Tree.cpp)
-[SkipList]()
+[AVL-Tree](https://github.com/anastasiya0304/Structures/blob/master/Create%20AVL-Tree.cpp)  
+[SkipList](https://github.com/anastasiya0304/Structures/blob/master/Skiplist.cpp)  
 [Тестирование](#test)
 
 Для каждой из структур данных реализованы:
