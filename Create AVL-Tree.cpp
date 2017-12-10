@@ -1,112 +1,204 @@
-struct node // структура для представления узлов дерева
-{
-	int key;
-	unsigned char height;
-	node* left;
-	node* right;
-	node(int k) { key = k; left = right = 0; height = 1; }
+#ifndef NAST_AVLTREE_H
+#define NAST_AVLTREE_H
+
+#endif //NAST_AVLTREE_H
+#include <cmath>
+#include <fstream>
+#include <iostream>
+
+#include <algorithm>
+#include <assert.h>
+#include <iostream>
+
+// АВЛ-дерево с целочисленными ключами.
+class CAVLTree {
+public:
+    CAVLTree() : root( nullptr ) {}
+    bool Has( int key );
+    void Add( int key );
+    void Remove( int key );
+    void Print(std::ostream &outputstream);
+
+private:
+    // Узел дерева. Пока без Count.
+    struct CAVLTreeNode {
+        int Key;
+        int Height;
+        CAVLTreeNode* Left;
+        CAVLTreeNode* Right;
+        CAVLTreeNode( int key ) : Key( key ), Height( 1 ), Left( nullptr ), Right( nullptr ) {}
+    };
+
+    CAVLTreeNode* root;
+
+    static void add( CAVLTreeNode*& node, int key );
+    static void fixupBalance( CAVLTreeNode*& node );
+    static int height( const CAVLTreeNode* node ) { return node == nullptr ? 0 : node->Height; }
+    static int balance( const CAVLTreeNode* node );
+    static void fixHeight( CAVLTreeNode* node );
+    static void rotateLeft( CAVLTreeNode* node );
+    static void rotateRight( CAVLTreeNode* node );
+    static int max( CAVLTreeNode* node );
+    static int min( CAVLTreeNode* node );
+    static bool has( CAVLTreeNode* node, int key );
+    static CAVLTreeNode* rem(CAVLTreeNode* node, int key);
+    static void print(std::ostream &outputstream, CAVLTreeNode *node);
 };
 
-unsigned char height(node* p)
+void  CAVLTree::rotateLeft( CAVLTreeNode* node )
 {
-	return p?p->height:0;
+    CAVLTreeNode *p = node->Left;
+    node->Left = p->Right;
+    p->Right = node;
+    fixHeight(node);
+    fixHeight(p);
+
 }
 
-int bfactor(node* p)
-{
-	return height(p->right)-height(p->left);
+void CAVLTree::rotateRight( CAVLTreeNode *node ) {
+
+    CAVLTreeNode *p = node->Right;
+    node->Right = p->Right;
+    p->Left= node;
+    fixHeight(node);
+    fixHeight(p);
+
 }
 
-void fixheight(node* p)
+
+void CAVLTree::Add( int key )
 {
-	unsigned char hl = height(p->left);
-	unsigned char hr = height(p->right);
-	p->height = (hl>hr?hl:hr)+1;
+    add( root, key );
 }
 
-node* rotateright(node* p) // правый поворот вокруг p
+// Рекурсивное добавление узла в поддерево.
+// node передается по ссылке, чтобы обновить указатель в случае поворота или добавления нового узла.
+void CAVLTree::add( CAVLTreeNode*& node, int key )
 {
-	node* q = p->left;
-	p->left = q->right;
-	q->right = p;
-	fixheight(p);
-	fixheight(q);
-	return q;
+    if( node == nullptr ) {
+        node = new CAVLTreeNode( key );
+        return;
+    }
+    // Рекурсивно добавляем узел.
+    if( node->Key < key ) {
+        add( node->Right, key );
+    } else {
+        add( node->Left, key );
+    }
+    // Восстановим баланс текущего узла.
+    fixupBalance( node );
 }
 
-node* rotateleft(node* q) // левый поворот вокруг q
+int CAVLTree::balance( const CAVLTreeNode* node )
 {
-	node* p = q->right;
-	q->right = p->left;
-	p->left = q;
-	fixheight(q);
-	fixheight(p);
-	return p;
+    assert( node != nullptr );
+    return height( node->Left ) - height( node->Right );
 }
 
-node* balance(node* p) // балансировка узла p
+void CAVLTree::fixupBalance( CAVLTreeNode*& node )
 {
-	fixheight(p);
-	if( bfactor(p)==2 )
-	{
-		if( bfactor(p->right) < 0 )
-			p->right = rotateright(p->right);
-		return rotateleft(p);
-	}
-	if( bfactor(p)==-2 )
-	{
-		if( bfactor(p->left) > 0  )
-			p->left = rotateleft(p->left);
-		return rotateright(p);
-	}
-	return p; // балансировка не нужна
+    assert( node != nullptr );
+
+    if( balance( node ) == 2 ) {
+        if( balance( node->Left ) == -1 ) {
+            rotateLeft( node->Left );
+        }
+        rotateRight( node );
+    } else if( height( node->Left ) - height( node->Right ) == -2 ) {
+        if( balance( node->Right ) == 1 ) {
+            rotateRight( node->Right );
+        }
+        rotateLeft( node );
+    } else {
+        fixHeight( node );
+    }
 }
 
-node* insert(node* p, int k) // вставка ключа k в дерево с корнем p
+void CAVLTree::fixHeight( CAVLTreeNode* node )
 {
-	if( !p ) return new node(k);
-	if( k<p->key )
-		p->left = insert(p->left,k);
-	else
-		p->right = insert(p->right,k);
-	return balance(p);
+    node->Height = std::max( height( node->Left ), height( node->Right ) ) + 1;
 }
 
-node* findmin(node* p) // поиск узла с минимальным ключом в дереве p 
-{
-	return p->left?findmin(p->left):p;
+int CAVLTree::max( CAVLTreeNode* node ) {
+    assert( node != nullptr );
+    while (node->Right != NULL) {
+        node = node->Right;
+    }
+    return node->Key;
 }
 
-node* findmax(node* p) // поиск узла с максимальным ключом в дереве p
-{
-	return p->right?findmax(p->right):p;
-}	
 
-node* removemin(node* p) // удаление узла с минимальным ключом из дерева p
-{
-	if( p->left==0 )
-		return p->right;
-	p->left = removemin(p->left);
-	return balance(p);
+int CAVLTree::min( CAVLTreeNode* node ) {
+    assert( node != nullptr );
+    while (node->Left != NULL) {
+        node = node->Left;
+    }
+    return node->Key;
 }
 
-node* remove(node* p, int k) // удаление ключа k из дерева p
-{
-	if( !p ) return 0;
-	if( k < p->key )
-		p->left = remove(p->left,k);
-	else if( k > p->key )
-		p->right = remove(p->right,k);	
-	else //  k == p->key 
-	{
-		node* q = p->left;
-		node* r = p->right;
-		delete p;
-		if( !r ) return q;
-		node* min = findmin(r);
-		min->right = removemin(r);
-		min->left = q;
-		return balance(min);
-	}
-	return balance(p);
+bool CAVLTree::Has( int key ) {
+
+    has(root,key);
+}
+
+bool CAVLTree::has( CAVLTreeNode* node, int key ){
+
+    assert( node != nullptr );
+
+    if (node->Key == key) {
+        return true;
+    }
+
+    if (key < node->Key) {
+        return has(node->Left, key);
+    } else {
+        return has(node->Right, key);
+    }
+}
+
+void CAVLTree::Remove( int key ){
+
+    rem(root,key);
+}
+
+
+CAVLTree::CAVLTreeNode* CAVLTree::rem(CAVLTreeNode* node, int key){
+    assert( node != nullptr );
+
+    CAVLTreeNode *p;
+        if (node->Key == key) {
+            if (node->Left == nullptr || node->Right == nullptr) {
+                if (node->Left == nullptr) {
+                    p = node->Right;
+                } else {
+                    p = node->Left;
+                }
+                delete node;
+                return p;
+            } else {
+                for (p = node->Right; p->Left != nullptr; p = p->Left);
+                node->Key = p->Key;
+                node->Right = rem(node->Right, p->Key);
+                 fixupBalance(node);
+                return node;
+            }
+        }
+
+        if (key < node->Key) {
+            node->Left = rem(node->Left, key);
+        } else {
+            node->Right = rem(node->Right, key);
+        }
+
+        fixupBalance(node);
+        return node;
+    }
+void CAVLTree::Print(std::ostream &outputstream){
+    print( outputstream, root );
+}
+void CAVLTree::print(std::ostream &outputstream, CAVLTreeNode *node) {
+    assert(node != nullptr);
+    print(outputstream, node->Left);
+    outputstream << node->Key << " ";
+    print(outputstream, node->Right);
 }
