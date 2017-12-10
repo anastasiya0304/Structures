@@ -4,8 +4,8 @@
 #include <fstream>
 #include <ctime>
 
-#include "AVL/AVLTree.hpp"
-#include "AA/AATree.hpp"
+#include "AVLTree.cpp"
+#include "Skiplist.cpp"
 
 bool LineIsOk(const std::string &str, const std::string &command) {
     std::istringstream iss(str);
