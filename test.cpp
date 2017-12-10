@@ -121,16 +121,16 @@ int main(int argc, char *argv[]) {
     }
 
 
-    //AA tree tests
+    
 
-    AATree<int> aaTree;
+    Skiplist<int> skiplist;
 
     srand(time(0));
 
     while (getline(fileIn, line)) {
         if (line.find("delete") == 0) {
             if (LineIsOk(line, "delete")) {
-                if (!aaTree.Delete(FindValue(line))) {
+                if (!skiplist.Delete(FindValue(line))) {
                     fileOut << "error" << std::endl;
                 }
             } else {
@@ -138,19 +138,19 @@ int main(int argc, char *argv[]) {
             }
         }
         if (line == "print") {
-            aaTree.PrintInOrderTraversal(fileOut);
+            skiplist.PrintInOrderTraversal(fileOut);
             fileOut << std::endl;
         }
         if (line.find("add") == 0) {
             if (LineIsOk(line, "add") != 0) {
-                aaTree.Insert(FindValue(line));
+                skiplist.Insert(FindValue(line));
             } else {
                 fileOut << "error" << std::endl;
             }
         }
         if (line.find("search") == 0) {
             if (LineIsOk(line, "search") != 0) {
-                if (!aaTree.Search(FindValue(line))) {
+                if (!skiplist.Search(FindValue(line))) {
                     fileOut << "error" << std::endl;
                 }
             } else {
@@ -158,10 +158,10 @@ int main(int argc, char *argv[]) {
             }
         }
         if (line == "min") {
-            fileOut << aaTree.Min() << std::endl;
+            fileOut << skiplist.Min() << std::endl;
         }
         if (line == "max") {
-            fileOut << aaTree.Max() << std::endl;
+            fileOut << skiplist.Max() << std::endl;
         }
         if (line == " ") {
             fileOut << "error" << std::endl;
