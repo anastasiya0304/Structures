@@ -1,313 +1,227 @@
-using std::swap;
+#ifndef NAST_SKIPL_H
+#define NAST_SKIPL_H
 
-template <typename KEY_T, typename DATA_T>
-class SkipList{
-	size_t MaxLevel;
-	double SkipDivisor;
-	struct Pair{
-		KEY_T Key;
-		DATA_T Data;
-		Pair* Previous;
-		Array<Pair*> Next;
-		Pair(const KEY_T& InKey, const DATA_T& InData, Pair* InPrevious, size_t InLevel);
-		Pair(size_t InLevel);
-		~Pair();
-		Pair& operator=(const Pair& InPair);
-		Pair* PreviousOnLevel(size_t InLevel);
-		Pair* NextOnLevel(size_t InLevel);
-	};
-	Pair Start;
-	Pair* NewPrevious(const KEY_T& InKey);
-	Pair* PairByKey(const KEY_T& InKey);
-	size_t NewLevel();
+#endif //NAST_SKIPL_H
+
+#include <bits/stdc++.h>
+
+
+// Class to implement node
+class Node
+{
 public:
-	class Iterator{
-		SkipList* CurrentList;
-		Pair* CurrentPair;
-		friend class SkipList<KEY_T, DATA_T>;
-	public:
-		Iterator(const Iterator& InIterator);
-		Iterator(SkipList& InSkipList);
-		operator bool();
-		Iterator& operator++();
-		Iterator& operator--();
-		Iterator operator++(int);
-		Iterator operator--(int);
-		Iterator& operator+=(size_t n);
-		Iterator& operator-=(size_t n);
-		Iterator& operator=(const Iterator& InIterator);
-		Iterator& operator=(const KEY_T& InKey);
-		DATA_T& operator*();
-		void Delete();
-	};
-	SkipList(size_t InNumberOfLanes=3, double InSkipDivisor=1.0/4.0);
-	~SkipList();
-	Iterator GetBegin();
-	Iterator GetEnd();
-	void Add(const KEY_T& InKey, const DATA_T& InData);
-	void Delete(const KEY_T& InKey);
-	DATA_T& operator[](const KEY_T& InKey);
-	size_t Count();
-	void Clear();
-	Iterator Find(const DATA_T& Unknown);
-	bool IsEmpty();
+    int key;
+
+    // Array to hold pointers to node of different level
+    Node **forward;
+    Node(int, int);
 };
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Pair* SkipList<KEY_T, DATA_T>::Pair::PreviousOnLevel(size_t InLevel){
-	if(!this)
-		return NULL;
-	Pair* Current=Previous;
-	for(; Current && !(Current->Next.Count()>=InLevel+1); Current=Current->Previous){}
-	return Current;
-}
+Node::Node(int key, int level)
+{
+    this->key = key;
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Pair* SkipList<KEY_T, DATA_T>::Pair::NextOnLevel(size_t InLevel){
-	if(!this)
-		return NULL;
-	Pair* Current=Next[InLevel-1];
-	for(; Current && !(Current->Next.Count()>=InLevel+1); Current=Current->Next[InLevel-1]){}
-	return Current;
-}
+    // Allocate memory to forward
+    forward = new Node*[level+1];
 
-template <typename KEY_T, typename DATA_T>
-SkipList<KEY_T, DATA_T>::Pair::Pair(const KEY_T& InKey, const DATA_T& InData, SkipList<KEY_T, DATA_T>::Pair* InPrevious, size_t InLevel):Key(InKey), Data(InData), Previous(InPrevious){
-	Pair* Current=Previous->Next[0];
-	Next.AddLast(Current);
-	for(size_t Counter=1; Counter<=InLevel; Counter++){
-		Current=NextOnLevel(Counter);
-		Next.AddLast(Current);
-	}
-	Current=Previous;
-	for(size_t Counter=0; Counter<=InLevel; Counter++)
-		if(Current=PreviousOnLevel(Counter))
-			Current->Next[Counter]=this;
-}
+    // Fill forward array with 0(NULL)
+    std::memset(forward, 0, sizeof(Node*)*(level+1));
+};
 
-template <typename KEY_T, typename DATA_T>
-SkipList<KEY_T, DATA_T>::Pair::Pair(size_t InLevel): Previous(NULL){
-	for(size_t Counter=0; Counter<=InLevel; Counter++)
-		Next.AddLast(NULL);
-}
+// Class for Skip list
+class SkipList
+{
 
-template <typename KEY_T, typename DATA_T>
-SkipList<KEY_T, DATA_T>::Pair::~Pair(){
-	size_t OurLevel=Next.Count()-1;
-	Pair* Current=this;
-	for(size_t Counter=0; Counter<=OurLevel; Counter++)
-		if(Current=PreviousOnLevel(Counter))
-			Current->Next[Counter]=Next[Counter];
-}
+    int MAXLVL;
 
-template <typename KEY_T, typename DATA_T>
-SkipList<KEY_T, DATA_T>::SkipList(size_t InMaxLevel, double InSkipDivisor):MaxLevel(InMaxLevel), SkipDivisor(InSkipDivisor),Start(MaxLevel){}
+    // P is the fraction of the nodes with level
+    // i pointers also having level i+1 pointers
+    float P;
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Pair& SkipList<KEY_T, DATA_T>::Pair::operator=(const SkipList<KEY_T, DATA_T>::Pair& InPair){
-	Key=InPair.Key;
-	Data=InPair.Data;
-	Previous=InPair.Previous;
-	size_t max=Next.Count();
-	for(size_t i; i<max; ++i)
-		Next.AddLast(Next[i]);
-	return *this;
-}
+    int level;
 
-template <typename KEY_T, typename DATA_T>
-SkipList<KEY_T, DATA_T>::~SkipList(){
-	Clear();
-}
+    Node *header;
+public:
+    SkipList(int, float);
+    int randomLevel();
+    Node* createNode(int, int);
+    void insertElement(int);
+    void deleteElement(int);
+    void searchElement(int);
+    void displayList();
+};
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Pair* SkipList<KEY_T, DATA_T>::NewPrevious(const KEY_T& InKey){
-	Pair* Previous=&Start;
-	Pair* Current=Start.Next[MaxLevel];
-	for(size_t Counter=MaxLevel; Counter>=0; Counter--){
-		while(Current && InKey>Current->Key){
-			Previous=Current;
-			Current=Current->Next[Counter];
-		}
-		if(!Counter)
-			break;
-		Current=Previous;
-	};
-	return Previous;
-}
+SkipList::SkipList(int MAXLVL, float P)
+{
+    this->MAXLVL = MAXLVL;
+    this->P = P;
+    level = 0;
 
-template <typename KEY_T, typename DATA_T>
-size_t SkipList<KEY_T, DATA_T>::NewLevel(){
-	size_t Level=0;
-	while(rand()%1000<SkipDivisor*1000 && Level<=MaxLevel)
-		Level++;
-	return Level;
-}
+    // create header node and initialize key to -1
+    header = new Node(-1, MAXLVL);
+};
 
-template <typename KEY_T, typename DATA_T>
-void SkipList<KEY_T, DATA_T>::Add(const KEY_T& InKey, const DATA_T& InData){
-	Pair* Previous=NewPrevious(InKey);
-	Pair* Next=Previous->Next[0];
-	if(Next && Next->Key==InKey)
-		throw String("Not unique key!");
-	new Pair(InKey, InData, Previous, NewLevel());
-}
+// create random level for node
+int SkipList::randomLevel()
+{
+    float r = (float)::rand()/RAND_MAX;
+    int lvl = 0;
+    while(r < P && lvl < MAXLVL)
+    {
+        lvl++;
+        r = (float)rand()/RAND_MAX;
+    }
+    return lvl;
+};
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Pair* SkipList<KEY_T, DATA_T>::PairByKey(const KEY_T& InKey){
-	Pair* Current=NewPrevious(InKey);
-	if((Current=Current->Next[0]) && Current->Key==InKey)
-		return Current;
-	throw String("No pair for this key!");
-}
+// create new node
+Node* SkipList::createNode(int key, int level)
+{
+    Node *n = new Node(key, level);
+    return n;
+};
 
-template <typename KEY_T, typename DATA_T>
-void SkipList<KEY_T, DATA_T>::Delete(const KEY_T& InKey){
-	if(IsEmpty())
-		throw String("There is empty list!");
-	delete PairByKey(InKey);
-}
 
-template <typename KEY_T, typename DATA_T>
-DATA_T& SkipList<KEY_T, DATA_T>::operator[](const KEY_T& InKey){
-	if(IsEmpty())
-		throw String("List is empty!");
-	return PairByKey(InKey)->Data;
-}
+void SkipList::insertElement(int key)
+{
+    Node *current = header;
 
-template <typename KEY_T, typename DATA_T>
-size_t SkipList<KEY_T, DATA_T>::Count(){
-	if(IsEmpty())
-		return 0;
-	Pair* Next=Start.Next[0];
-	size_t n=1;
-	while(Next=Next->Next[0])
-		n++;
-	return n;
-}
+    // create update array and initialize it
+    Node *update[MAXLVL+1];
+    memset(update, 0, sizeof(Node*)*(MAXLVL+1));
 
-template <typename KEY_T, typename DATA_T>
-void SkipList<KEY_T, DATA_T>::Clear(){
-	Pair* Current=Start.Next[1];
-	Pair* Previous=NULL;
-	while(Current){
-		Current->Previous=NULL;
-		Previous=Current;
-		Current=Current->Next[0];
-		delete Previous;
-	}
-	for(size_t i=0; i<=Start.Next.Count()-1;i++)
-		Start.Next[i]=NULL;
-}
+    /*    start from highest level of skip list
+        move the current pointer forward while key
+        is greater than key of node next to current
+        Otherwise inserted current in update and
+        move one level down and continue search
+    */
+    for(int i = level; i >= 0; i--)
+    {
+        while(current->forward[i] != NULL &&
+              current->forward[i]->key < key)
+            current = current->forward[i];
+        update[i] = current;
+    }
 
-template <typename KEY_T, typename DATA_T>
-SkipList<KEY_T, DATA_T>::Iterator::Iterator(const SkipList<KEY_T, DATA_T>::Iterator& InIterator):CurrentList(InIterator.CurrentList), CurrentPair(InIterator.CurrentPair){}
+    /* reached level 0 and forward pointer to
+       right, which is desired position to
+       insert key.
+    */
+    current = current->forward[0];
 
-template <typename KEY_T, typename DATA_T>
-SkipList<KEY_T, DATA_T>::Iterator::Iterator(SkipList<KEY_T, DATA_T>& InSkipList):CurrentList(&InSkipList), CurrentPair(InSkipList.Start.Next[0]){}
+    /* if current is NULL that means we have reached
+       to end of the level or current's key is not equal
+       to key to insert that means we have to insert
+       node between update[0] and current node */
+    if (current == NULL || current->key != key)
+    {
+        // Generate a random level for node
+        int rlevel = randomLevel();
 
-template <typename KEY_T, typename DATA_T>
-SkipList<KEY_T, DATA_T>::Iterator::operator bool(){
-	return CurrentList && CurrentPair;
-}
+        /* If random level is greater than list's current
+           level (node with highest level inserted in
+           list so far), initialize update value with pointer
+           to header for further use */
+        if(rlevel > level)
+        {
+            for(int i=level+1;i<rlevel+1;i++)
+                update[i] = header;
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Iterator& SkipList<KEY_T, DATA_T>::Iterator::operator++(){
-	if(CurrentPair)
-		CurrentPair=CurrentPair->Next[0];
-	return *this;
-}
+            // Update the list current level
+            level = rlevel;
+        }
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Iterator& SkipList<KEY_T, DATA_T>::Iterator::operator--(){
-	if(CurrentPair && CurrentPair!=CurrentList->Start.Next[0])
-		CurrentPair=CurrentPair->Previous;
-	else
-		CurrentPair=NULL;
-	return *this;
-}
+        // create new node with random level generated
+        Node* n = createNode(key, rlevel);
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Iterator SkipList<KEY_T, DATA_T>::Iterator::operator++(int){
-	Iterator Old(*this);
-	++*this;
-	return Old;
-}
+        // insert node by rearranging pointers
+        for(int i=0;i<=rlevel;i++)
+        {
+            n->forward[i] = update[i]->forward[i];
+            update[i]->forward[i] = n;
+        }
+        std::cout<<"Successfully Inserted key "<<key<<"\n";
+    }
+};
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Iterator SkipList<KEY_T, DATA_T>::Iterator::operator--(int){
-	Iterator Old(*this);
-	--*this;
-	return Old;
-}
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Iterator& SkipList<KEY_T, DATA_T>::Iterator::operator=(const SkipList<KEY_T, DATA_T>::Iterator& InIterator){
-	CurrentList=InIterator.CurrentList;
-	CurrentPair=InIterator.CurrentPair;
-	return *this;
-}
+void SkipList::deleteElement(int key)
+{
+    Node *current = header;
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Iterator& SkipList<KEY_T, DATA_T>::Iterator::operator=(const KEY_T& InKey){
-	CurrentPair=CurrentList->PairByKey(InKey);
-	return *this;
-}
+    // create update array and initialize it
+    Node *update[MAXLVL+1];
+    memset(update, 0, sizeof(Node*)*(MAXLVL+1));
 
-template <typename KEY_T, typename DATA_T>
-DATA_T& SkipList<KEY_T, DATA_T>::Iterator::operator*(){
-	if(!*this)
-		throw String("Reading from bad iterator!");
-	return CurrentPair->Data;
-}
+    /*    start from highest level of skip list
+        move the current pointer forward while key
+        is greater than key of node next to current
+        Otherwise inserted current in update and
+        move one level down and continue search
+    */
+    for(int i = level; i >= 0; i--)
+    {
+        while(current->forward[i] != NULL  &&
+              current->forward[i]->key < key)
+            current = current->forward[i];
+        update[i] = current;
+    }
 
-template <typename KEY_T, typename DATA_T>
-void SkipList<KEY_T, DATA_T>::Iterator::Delete(){
-	if(!*this)
-		throw String("Deleting data of bad iterator!");
-	delete CurrentPair;
-	CurrentPair=NULL;
-}
+    /* reached level 0 and forward pointer to
+       right, which is possibly our desired node.*/
+    current = current->forward[0];
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Iterator& SkipList<KEY_T, DATA_T>::Iterator::operator+=(size_t n){
-	for(size_t Counter=0; Counter<n && CurrentPair; Counter++)
-		CurrentPair=CurrentPair->Next[0];
-	return *this;
-}
+    // If current node is target node
+    if(current != NULL and current->key == key)
+    {
+        /* start from lowest level and rearrange
+           pointers just like we do in singly linked list
+           to remove target node */
+        for(int i=0;i<=level;i++)
+        {
+            /* If at level i, next node is not target
+               node, break the loop, no need to move
+              further level */
+            if(update[i]->forward[i] != current)
+                break;
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Iterator& SkipList<KEY_T, DATA_T>::Iterator::operator-=(size_t n){
-	for(size_t Counter=0; Counter<n && CurrentPair; Counter++)
-		CurrentPair=CurrentPair->Previous;
-	if(CurrentPair==&CurrentList->Start)
-	return *this;
-}
+            update[i]->forward[i] = current->forward[i];
+        }
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Iterator SkipList<KEY_T, DATA_T>::GetBegin(){
-	return Iterator(*this);
-}
+        // Remove levels having no elements
+        while(level>0 &&
+              header->forward[level] == 0)
+            level--;
+        std::cout<<"Successfully deleted key "<<key<<"\n";
+    }
+};
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Iterator SkipList<KEY_T, DATA_T>::GetEnd(){
-	Iterator ReturnValue(*this);
-	ReturnValue+=ReturnValue.CurrentList->Count()-1;
-	return ReturnValue;
-}
+// Search for element in skip list
+void SkipList::searchElement(int key)
+{
+    Node *current = header;
 
-template <typename KEY_T, typename DATA_T>
-typename SkipList<KEY_T, DATA_T>::Iterator SkipList<KEY_T, DATA_T>::Find(const DATA_T& Unknown){
-	Iterator Result(*this);
-	while (Result&& !(*Result==Unknown))
-		++Result;
-	return Result;
-}
+    /*    start from highest level of skip list
+        move the current pointer forward while key
+        is greater than key of node next to current
+        Otherwise inserted current in update and
+        move one level down and continue search
+    */
+    for(int i = level; i >= 0; i--)
+    {
+        while(current->forward[i] &&
+              current->forward[i]->key < key)
+            current = current->forward[i];
 
-template <typename KEY_T, typename DATA_T>
-bool SkipList<KEY_T, DATA_T>::IsEmpty(){
-	typename Array<Pair*>::Iterator i(Start.Next);
-	while(i)
-		if(*i++)
-			return false;
-	return true;
-}
+    }
+
+    /* reached level 0 and advance pointer to
+       right, which is possibly our desired node*/
+    current = current->forward[0];
+
+    // If current node have key equal to
+    // search key, we have found our target node
+    if(current and current->key == key)
+        std::cout<<"Found key: "<<key<<"\n";
+};
