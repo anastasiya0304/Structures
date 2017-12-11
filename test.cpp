@@ -1,12 +1,15 @@
 #include <iostream>
+#include "AVLTree.h"
+
+#include <iostream>
 #include <cassert>
 #include <sstream>
 #include <fstream>
 #include <ctime>
+#include <chrono>
 
 #include "AvlTree.h"
-
-
+#include "SkipList.h"
 
 
 int FindValue(const std::string &str) {
@@ -32,27 +35,78 @@ bool FileIsEqual(const std::string &firstFileName, const std::string &secondFile
     return (buffer1 == buffer2);
 }
 
-int main(int argc, char *argv[]) {
-    if (argc < 4) {
-        return 0;
-    }
+int main() {
+//    if (argc < 4) {
+//        return 0;
+//    }
     std::string line;
-    std::ifstream fileIn(argv[1]);
+    std::ifstream fileIn("/Users/Vipolion/Documents/ALG/AVL_Skip/in.txt");
     assert(fileIn);
-    std::ofstream fileOut(argv[2]);
+    std::ofstream fileOut("/Users/Vipolion/Documents/ALG/AVL_Skip/out.txt");
     assert(fileOut);
 
-    //AVL tree tests
 
-    CAVLTree avlTree;
+    SkipList skp(10,10);
 
-    srand(time(0));
+    std::chrono::time_point<std::chrono::high_resolution_clock> start1, stop1;
+    start1 = std::chrono::high_resolution_clock::now();
 
     while (getline(fileIn, line)) {
         if (line.find("delete") == 0) {
-                if (!avlTree.Remove(FindValue(line))) {
-                    fileOut << "error" << std::endl;
-                }
+//            if (!avlTree.Remove(FindValue(line))) {
+//                fileOut << "error" << std::endl;
+//            }
+
+        }
+//        if (line == "print") {
+//            skp.displayList(fileOut);
+//            fileOut << std::endl;
+//        }
+        if (line.find("add") == 0) {
+//
+            skp.insertElement(FindValue(line));
+//
+        }
+        if (line.find("search") == 0) {
+//            
+//            if (!skp.s(FindValue(line))) {
+//                fileOut << "error" << std::endl;
+//            
+
+//
+        }
+//        if (line == "min") {
+//            fileOut << avlTree.Min() << std::endl;
+//        }
+//        if (line == "max") {
+//            fileOut << avlTree.Max() << std::endl;
+//        }
+//        if (line == " ") {
+//            fileOut << "error" << std::endl;
+//        }
+    }
+    stop1 = std::chrono::high_resolution_clock::now();
+    std::cout << "runtime = " << std::chrono::duration_cast<std::chrono::microseconds>(stop1-start1).count() << std::endl;
+
+    fileIn.close();
+    fileOut.close();
+
+//    if (FileIsEqual(argv[2], argv[3])) {
+//        std::cout << "Correct" << std::endl;
+//    } else {
+//        std::cout << "Not correct" << std::endl;
+//    }
+
+    CAVLTree avlTree;
+
+    std::chrono::time_point<std::chrono::high_resolution_clock> start, stop;
+    start = std::chrono::high_resolution_clock::now();
+
+    while (getline(fileIn, line)) {
+        if (line.find("delete") == 0) {
+//            if (!avlTree.Remove(FindValue(line))) {
+//                fileOut << "error" << std::endl;
+//            }
 
         }
         if (line == "print") {
@@ -60,93 +114,32 @@ int main(int argc, char *argv[]) {
             fileOut << std::endl;
         }
         if (line.find("add") == 0) {
-//          
-                avlTree.Add(FindValue(line));
-//            
+//
+            avlTree.Add(FindValue(line));
+//
         }
         if (line.find("search") == 0) {
-//            if (LineIsOk(line, "search") != 0) {
-                if (!avlTree.Has(FindValue(line))) {
-                    fileOut << "error" << std::endl;
-                }
+           
+            if (!avlTree.Has(FindValue(line))) {
+                fileOut << "error" << std::endl;
+            }
 
-//            
+//
         }
-        if (line == "min") {
-            fileOut << avlTree.Min() << std::endl;
-        }
-        if (line == "max") {
-            fileOut << avlTree.Max() << std::endl;
-        }
-        if (line == " ") {
-            fileOut << "error" << std::endl;
-        }
+//        if (line == "min") {
+//            fileOut << avlTree.Min() << std::endl;
+//        }
+//        if (line == "max") {
+//            fileOut << avlTree.Max() << std::endl;
+//        }
+//        if (line == " ") {
+//            fileOut << "error" << std::endl;
+//        }
     }
-
-    std::cout << "runtime = " << clock()/1000.0 << std::endl;
+    stop = std::chrono::high_resolution_clock::now();
+    std::cout << "runtime = " << std::chrono::duration_cast<std::chrono::microseconds>(stop-start).count() << std::endl;
 
     fileIn.close();
     fileOut.close();
+ }
 
-    if (FileIsEqual(argv[2], argv[3])) {
-        std::cout << "Correct" << std::endl;
-    } else {
-        std::cout << "Not correct" << std::endl;
-    }
-
-    //SkipList tests
-    
-SkipList skplst;
-
-    srand(time(0));
-
-    while (getline(fileIn, line)) {
-        if (line.find("delete") == 0) {
-                if (!skplst.Remove(FindValue(line))) {
-                    fileOut << "error" << std::endl;
-                }
-
-        }
-        if (line == "print") {
-            skplst.Print(fileOut);
-            fileOut << std::endl;
-        }
-        if (line.find("add") == 0) {
-//          
-                skplst.Add(FindValue(line));
-//            
-        }
-        if (line.find("search") == 0) {
-//            if (LineIsOk(line, "search") != 0) {
-                if (!skplst.Has(FindValue(line))) {
-                    fileOut << "error" << std::endl;
-                }
-
-//            
-        }
-        if (line == "min") {
-            fileOut << skplst.Min() << std::endl;
-        }
-        if (line == "max") {
-            fileOut << skplst.Max() << std::endl;
-        }
-        if (line == " ") {
-            fileOut << "error" << std::endl;
-        }
-    }
-
-    std::cout << "runtime = " << clock()/1000.0 << std::endl;
-
-    fileIn.close();
-    fileOut.close();
-
-    if (FileIsEqual(argv[2], argv[3])) {
-        std::cout << "Correct" << std::endl;
-    } else {
-        std::cout << "Not correct" << std::endl;
-    }
-
-
-    return 0;
-
-}
