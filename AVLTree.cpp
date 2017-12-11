@@ -118,27 +118,7 @@ void CAVLTree::Add( int key )
 
 // Рекурсивное добавление узла в поддерево.
 // node передается по ссылке, чтобы обновить указатель в случае поворота или добавления нового узла.
-//void CAVLTree::add( CAVLTreeNode** _node, int key )
-//{
-//    CAVLTreeNode* node=*_node;
-//    if( node== nullptr ) {
-//        node = new CAVLTreeNode;
-//        node->Key=key;
-//        node->Right= nullptr;
-//        node->Left= nullptr;
-//        node->Height=1;
-//
-//        return;
-//    }
-//    // Рекурсивно добавляем узел.
-//    if( node->Key < key ) {
-//        add( &node->Right, key );
-//    } else {
-//        add( &node->Left, key );
-//    }
-//    // Восстановим баланс текущего узла.
-//    fixupBalance( node );
-//}
+
 
 int CAVLTree::balance( const CAVLTreeNode* node )
 {
