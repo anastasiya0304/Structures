@@ -7,8 +7,6 @@
 #include <fstream>
 #include <ctime>
 #include <chrono>
-
-#include "AvlTree.h"
 #include "SkipList.h"
 
 
@@ -36,14 +34,14 @@ bool FileIsEqual(const std::string &firstFileName, const std::string &secondFile
 }
 
 int main() {
-//    if (argc < 4) {
-//        return 0;
-//    }
+
     std::string line;
     std::ifstream fileIn("/Users/Vipolion/Documents/ALG/AVL_Skip/in.txt");
     assert(fileIn);
     std::ofstream fileOut("/Users/Vipolion/Documents/ALG/AVL_Skip/out.txt");
     assert(fileOut);
+    std::ifstream filecorrect("/Users/Vipolion/Documents/ALG/AVL_Skip/true.txt");
+    assert(fileIn);
 
 
     SkipList skp(10,10);
@@ -53,27 +51,26 @@ int main() {
 
     while (getline(fileIn, line)) {
         if (line.find("delete") == 0) {
-//            if (!avlTree.Remove(FindValue(line))) {
-//                fileOut << "error" << std::endl;
-//            }
+            if (!skp.deleteElement(FindValue(line))) {
+                fileOut << "error" << std::endl;
+            }
 
         }
-//        if (line == "print") {
-//            skp.displayList(fileOut);
-//            fileOut << std::endl;
-//        }
+        if (line == "print") {
+            skp.displayList(fileOut);
+            fileOut << std::endl;
+        }
         if (line.find("add") == 0) {
 //
             skp.insertElement(FindValue(line));
 //
         }
         if (line.find("search") == 0) {
-//            
-//            if (!skp.s(FindValue(line))) {
-//                fileOut << "error" << std::endl;
-//            
-
 //
+            if (!skp.searchElement(FindValue(line))) {
+                fileOut << "error" << std::endl;
+
+
         }
 //        if (line == "min") {
 //            fileOut << avlTree.Min() << std::endl;
@@ -88,28 +85,27 @@ int main() {
     stop1 = std::chrono::high_resolution_clock::now();
     std::cout << "runtime = " << std::chrono::duration_cast<std::chrono::microseconds>(stop1-start1).count() << std::endl;
 
-    fileIn.close();
-    fileOut.close();
 
-//    if (FileIsEqual(argv[2], argv[3])) {
-//        std::cout << "Correct" << std::endl;
-//    } else {
-//        std::cout << "Not correct" << std::endl;
-//    }
+
 
     CAVLTree avlTree;
+
+
+    fileIn.clear();
+    fileIn.seekg(0);
+
 
     std::chrono::time_point<std::chrono::high_resolution_clock> start, stop;
     start = std::chrono::high_resolution_clock::now();
 
     while (getline(fileIn, line)) {
         if (line.find("delete") == 0) {
-//            if (!avlTree.Remove(FindValue(line))) {
-//                fileOut << "error" << std::endl;
-//            }
+            if (!avlTree.Remove(FindValue(line))) {
+                fileOut << "error1" << std::endl;
+            }
 
         }
-        if (line == "print") {
+        if (line.find("print") == 0) {
             avlTree.Print(fileOut);
             fileOut << std::endl;
         }
@@ -119,27 +115,34 @@ int main() {
 //
         }
         if (line.find("search") == 0) {
-           
+
             if (!avlTree.Has(FindValue(line))) {
-                fileOut << "error" << std::endl;
+                fileOut << "false" << std::endl;
             }
 
 //
         }
-//        if (line == "min") {
-//            fileOut << avlTree.Min() << std::endl;
-//        }
-//        if (line == "max") {
-//            fileOut << avlTree.Max() << std::endl;
-//        }
-//        if (line == " ") {
-//            fileOut << "error" << std::endl;
-//        }
+        if (line == "min") {
+            fileOut << avlTree.Min() << std::endl;
+        }
+        if (line == "max") {
+            fileOut << avlTree.Max() << std::endl;
+        }
+        if (line == " ") {
+            fileOut << "error" << std::endl;
+        }
     }
     stop = std::chrono::high_resolution_clock::now();
     std::cout << "runtime = " << std::chrono::duration_cast<std::chrono::microseconds>(stop-start).count() << std::endl;
 
     fileIn.close();
     fileOut.close();
- }
+
+    if (FileIsEqual("/Users/Vipolion/Documents/ALG/AVL_Skip/out.txt", "/Users/Vipolion/Documents/ALG/AVL_Skip/true.txt")) {
+        std::cout << "Correct" << std::endl;
+    } else {
+        std::cout << "Not correct" << std::endl;
+    }
+ }}
+
 
