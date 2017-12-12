@@ -1,3 +1,6 @@
+//
+// Created by Vipolion on 11.12.2017.
+//
 #pragma once
 #include <cmath>
 #include <fstream>
@@ -15,8 +18,10 @@ public:
     }
     bool Has( int key );
     void Add( int key );
-    void Remove( int key );
-    void Print(std::ostream &outputstream);
+    bool Remove( int key );
+    void Print(std::ostream&);
+    int Min();
+    int Max();
 
 //private:
     // Узел дерева. Пока без Count.
@@ -46,6 +51,9 @@ public:
 
 void  CAVLTree::rotateLeft( CAVLTreeNode* node )
 {
+    if (!node->Left){
+        return;
+    }
     CAVLTreeNode *p = node->Left;
     node->Left = p->Right;
     p->Right = node;
@@ -55,6 +63,10 @@ void  CAVLTree::rotateLeft( CAVLTreeNode* node )
 }
 
 void CAVLTree::rotateRight( CAVLTreeNode *node ) {
+
+    if (!node->Right){
+    return;
+    }
 
     CAVLTreeNode *p = node->Right;
     node->Right = p->Left;
@@ -116,8 +128,6 @@ void CAVLTree::Add( int key )
     }
 }
 
-// Рекурсивное добавление узла в поддерево.
-// node передается по ссылке, чтобы обновить указатель в случае поворота или добавления нового узла.
 
 
 int CAVLTree::balance( const CAVLTreeNode* node )
@@ -150,18 +160,30 @@ void CAVLTree::fixHeight( CAVLTreeNode* node )
     node->Height = std::max( height( node->Left ), height( node->Right ) ) + 1;
 }
 
+int CAVLTree::Max(){
+
+    return max(root);
+
+}
+
+
 int CAVLTree::max( CAVLTreeNode* node ) {
     assert( node != nullptr );
-    while (node->Right != NULL) {
+    while (node->Right != nullptr) {
         node = node->Right;
     }
     return node->Key;
 }
 
+int CAVLTree::Min(){
+
+    return min(root);
+
+}
 
 int CAVLTree::min( CAVLTreeNode* node ) {
     assert( node != nullptr );
-    while (node->Left != NULL) {
+    while (node->Left != nullptr) {
         node = node->Left;
     }
     return node->Key;
@@ -188,9 +210,13 @@ bool CAVLTree::has( CAVLTreeNode* node, int key ){
     }
 }
 
-void CAVLTree::Remove( int key ){
+bool CAVLTree::Remove( int key ){
 
-    rem(root,key);
+   if (CAVLTree::Has(key)) {
+       rem(root, key);
+       return true;
+   } else return false;
+
 }
 
 
