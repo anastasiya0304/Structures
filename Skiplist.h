@@ -1,4 +1,6 @@
-
+//
+// Created by Vipolion on 12.12.2017.
+//
 
 #ifndef AVL_SKIP_SKIPLIST_H
 #define AVL_SKIP_SKIPLIST_H
@@ -58,12 +60,12 @@ SkipList::SkipList(int MAXLVL, float P)
 
 int SkipList::randomLevel()
 {
-    float r = (float)::rand()/RAND_MAX;
+    float r = (float)::random()/RAND_MAX;
     int lvl = 0;
     while(r < P && lvl < MAXLVL)
     {
         lvl++;
-        r = (float)rand()/RAND_MAX;
+        r = (float)random()/RAND_MAX;
     }
     return lvl;
 };
@@ -85,7 +87,7 @@ void SkipList::insertElement(int key)
 
     for(int i = level; i >= 0; i--)
     {
-        while(current->forward[i] != NULL &&
+        while(current->forward[i] != nullptr &&
               current->forward[i]->key < key)
             current = current->forward[i];
         update[i] = current;
@@ -93,7 +95,7 @@ void SkipList::insertElement(int key)
 
     current = current->forward[0];
 
-    if (current == NULL || current->key != key)
+    if (current == nullptr || current->key != key)
     {
         int rlevel = randomLevel();
 
@@ -126,7 +128,7 @@ bool SkipList::deleteElement(int key)
 
     for(int i = level; i >= 0; i--)
     {
-        while(current->forward[i] != NULL  &&
+        while(current->forward[i] != nullptr  &&
               current->forward[i]->key < key)
             current = current->forward[i];
         update[i] = current;
@@ -134,7 +136,7 @@ bool SkipList::deleteElement(int key)
 
     current = current->forward[0];
 
-    if(current != NULL and current->key == key)
+    if(current != nullptr and current->key == key)
     {
 
         for(int i=0;i<=level;i++)
@@ -181,7 +183,7 @@ void SkipList::displayList(std::ostream &outputstream)
     {
         Node *node = header->forward[i];
         outputstream <<  "Level " << i << ": ";
-        while (node != NULL)
+        while (node != nullptr)
         {
             outputstream << node->key<<" ";
             node = node->forward[i];
