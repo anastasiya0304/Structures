@@ -1,9 +1,13 @@
-#ifndef NAST_SKIPL_H
-#define NAST_SKIPL_H
 
-#endif //NAST_SKIPL_H
 
-#include <bits/stdc++.h>
+#ifndef AVL_SKIP_SKIPLIST_H
+#define AVL_SKIP_SKIPLIST_H
+
+#endif //AVL_SKIP_SKIPLIST_H
+
+#include <cstring>
+#include <cstdlib>
+#include <iostream>
 
 
 class Node
@@ -36,9 +40,9 @@ public:
     int randomLevel();
     Node* createNode(int, int);
     void insertElement(int);
-    void deleteElement(int);
-    void searchElement(int);
-    void displayList();
+    bool deleteElement(int);
+    bool searchElement(int);
+    void displayList(std::ostream&);
 };
 
 SkipList::SkipList(int MAXLVL, float P)
@@ -47,7 +51,7 @@ SkipList::SkipList(int MAXLVL, float P)
     this->P = P;
     level = 0;
 
-   
+
     header = new Node(-1, MAXLVL);
 };
 
@@ -113,7 +117,7 @@ void SkipList::insertElement(int key)
 };
 
 
-void SkipList::deleteElement(int key)
+bool SkipList::deleteElement(int key)
 {
     Node *current = header;
 
@@ -135,7 +139,7 @@ void SkipList::deleteElement(int key)
 
         for(int i=0;i<=level;i++)
         {
-            
+
             if(update[i]->forward[i] != current)
                 break;
 
@@ -145,12 +149,13 @@ void SkipList::deleteElement(int key)
         while(level>0 &&
               header->forward[level] == 0)
             level--;
-        std::cout<<"Successfully deleted key "<<key<<"\n";
+        return true;
     }
+    return false;
 };
 
 
-void SkipList::searchElement(int key)
+bool SkipList::searchElement(int key)
 {
     Node *current = header;
 
@@ -165,5 +170,22 @@ void SkipList::searchElement(int key)
     current = current->forward[0];
 
     if(current and current->key == key)
-        std::cout<<"Found key: "<<key<<"\n";
+        return true;
+    else return false;
+};
+
+void SkipList::displayList(std::ostream &outputstream)
+{
+
+    for (int i=0;i<=level;i++)
+    {
+        Node *node = header->forward[i];
+        outputstream <<  "Level " << i << ": ";
+        while (node != NULL)
+        {
+            outputstream << node->key<<" ";
+            node = node->forward[i];
+        }
+        outputstream << "\n";
+    }
 };
