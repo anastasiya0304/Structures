@@ -1,6 +1,4 @@
-//
-// Created by Vipolion on 12.12.2017.
-//
+
 
 #ifndef AVL_SKIP_SKIPLIST_H
 #define AVL_SKIP_SKIPLIST_H
