@@ -36,11 +36,11 @@ bool FileIsEqual(const std::string &firstFileName, const std::string &secondFile
 int main() {
 
     std::string line;
-    std::ifstream fileIn("/Users/Vipolion/Documents/ALG/AVL_Skip/in.txt");
+    std::ifstream fileIn("/Users/Nast/Documents/ALG/AVL_Skip/in.txt");
     assert(fileIn);
-    std::ofstream fileOut("/Users/Vipolion/Documents/ALG/AVL_Skip/out.txt");
+    std::ofstream fileOut("/Users/Nast/Documents/ALG/AVL_Skip/out.txt");
     assert(fileOut);
-    std::ifstream filecorrect("/Users/Vipolion/Documents/ALG/AVL_Skip/true.txt");
+    std::ifstream filecorrect("/Users/Nasst/Documents/ALG/AVL_Skip/true.txt");
     assert(fileIn);
 
 
@@ -138,7 +138,7 @@ int main() {
     fileIn.close();
     fileOut.close();
 
-    if (FileIsEqual("/Users/Vipolion/Documents/ALG/AVL_Skip/out.txt", "/Users/Vipolion/Documents/ALG/AVL_Skip/true.txt")) {
+    if (FileIsEqual("/Users/Nast/Documents/ALG/AVL_Skip/out.txt", "/Users/Nast/Documents/ALG/AVL_Skip/true.txt")) {
         std::cout << "Correct" << std::endl;
     } else {
         std::cout << "Not correct" << std::endl;
