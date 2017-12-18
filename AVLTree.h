@@ -21,7 +21,7 @@ public:
     int Min();
     int Max();
 
-//private:
+private:
     
     struct CAVLTreeNode {
         int Key;
