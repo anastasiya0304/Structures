@@ -6,7 +6,7 @@
 
 #include <algorithm>
 #include <cassert>
-#include <iostream>
+
 
 // АВЛ-дерево с целочисленными ключами.
 class CAVLTree {
@@ -22,7 +22,7 @@ public:
     int Max();
 
 //private:
-    // Узел дерева. Пока без Count.
+    
     struct CAVLTreeNode {
         int Key;
         int Height;
