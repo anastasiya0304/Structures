@@ -17,11 +17,13 @@
 class CAVLTree {
 public:
     CAVLTree()  {
+
         root= nullptr;
     }
-    bool Has( int key );
-    void Add( int key );
-    bool Remove( int key );
+
+    bool Has( std::pair<int,int> param );
+    void Add( std::pair<int,int> param  );
+    bool Remove( std::pair<int,int> param );
     void Print(std::ostream&);
     int Min();
     int Max();
@@ -29,7 +31,8 @@ public:
 private:
 
     struct CAVLTreeNode {
-        int Key;
+
+        std::pair<int,int> pair;
         int Height;
         CAVLTreeNode* Left;
         CAVLTreeNode* Right;
@@ -46,8 +49,8 @@ private:
     static void rotateRight( CAVLTreeNode* node );
     static int max( CAVLTreeNode* node );
     static int min( CAVLTreeNode* node );
-    static bool has( CAVLTreeNode* node, int key );
-    static CAVLTreeNode* rem(CAVLTreeNode* node, int key);
+    static bool has( CAVLTreeNode* node, std::pair<int,int> param );
+    static CAVLTreeNode* rem(CAVLTreeNode* node, std::pair<int,int> param );
     static void print(std::ostream &outputstream, CAVLTreeNode *node);
 };
 

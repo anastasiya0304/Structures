@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     std::ofstream fileOut(argv[2]);
     assert(fileOut);
 
-    
+
     SkipList skp(10, 10);
 
     std::chrono::time_point<std::chrono::high_resolution_clock> start1, stop1;

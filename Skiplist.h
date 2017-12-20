@@ -1,6 +1,4 @@
-//
-// Created by Vipolion on 20.12.2017.
-//
+
 
 #ifndef AVL_SKIP_SKIPLIST_H
 #define AVL_SKIP_SKIPLIST_H
@@ -13,19 +11,15 @@
 
 
 class Node
+
 {
+
 public:
     int key;
     Node **forward;
     Node(int, int);
-};
 
-Node::Node(int key, int level)
-{
-    this->key = key;
-    forward = new Node*[level+1];
-    std::memset(forward, 0, sizeof(Node*)*(level+1));
-}
+};
 
 
 class SkipList

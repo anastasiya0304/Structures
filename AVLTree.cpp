@@ -1,6 +1,3 @@
-//
-// Created by Vipolion on 20.12.2017.
-//
 
 #include "AVLTree.h"
 
@@ -32,13 +29,14 @@ void CAVLTree::rotateRight( CAVLTreeNode *node ) {
 }
 
 
-void CAVLTree::Add( int key )
+void CAVLTree::Add ( std::pair<int,int> param )
 {
     CAVLTreeNode* node=root;
 
     if( root== nullptr ) {
         root = new CAVLTreeNode;
-        root->Key=key;
+        root->pair.first=param.first;
+        root->pair.second=param.second;
         root->Right= nullptr;
         root->Left= nullptr;
         root->Height=1;
@@ -47,11 +45,11 @@ void CAVLTree::Add( int key )
     }
 
     while (true){
-        if(key>node->Key){
+        if(param.first>node->pair.first){
             if (node->Right == nullptr){
 
                 CAVLTreeNode* inode = new CAVLTreeNode;
-                inode->Key=key;
+                inode->pair.first=param.first;
                 inode->Right= nullptr;
                 inode->Left= nullptr;
                 inode->Height=1;
@@ -67,7 +65,8 @@ void CAVLTree::Add( int key )
             if (node->Left == nullptr){
 
                 CAVLTreeNode* inode = new CAVLTreeNode;
-                inode->Key=key;
+                inode->pair.first=param.first;
+                inode->pair.second=param.second;
                 inode->Right= nullptr;
                 inode->Left= nullptr;
                 inode->Height=1;
@@ -127,7 +126,7 @@ int CAVLTree::max( CAVLTreeNode* node ) {
     while (node->Right != nullptr) {
         node = node->Right;
     }
-    return node->Key;
+    return node->pair.second;
 }
 
 int CAVLTree::Min(){
@@ -141,81 +140,116 @@ int CAVLTree::min( CAVLTreeNode* node ) {
     while (node->Left != nullptr) {
         node = node->Left;
     }
-    return node->Key;
+    return node->pair.second;
 }
 
-bool CAVLTree::Has( int key ) {
 
-    return has(root,key);
+bool CAVLTree::Has( std::pair<int,int> param  ) {
+
+    return has( root, param);
 
 }
 
-bool CAVLTree::has( CAVLTreeNode* node, int key ){
+
+bool CAVLTree::has( CAVLTreeNode* node, std::pair<int,int> param ){
 
     if (node == nullptr) return false;
 
-    if (node->Key == key) {
+    if (node->pair.first == param.first) {
         return true;
     }
 
-    if (key < node->Key) {
-        return has(node->Left, key);
-    } else {
-        return has(node->Right, key);
+    if (param.first < node->pair.first) {
+
+        return has(node->Left, param.first);
+
+    }
+
+    else {
+
+        return has(node->Right, param.first);
+
     }
 }
 
-bool CAVLTree::Remove( int key ){
+bool CAVLTree::Remove( std::pair<int,int> param ){
 
-    if (CAVLTree::Has(key)) {
-        rem(root, key);
+    if (CAVLTree::Has(param.first)) {
+        rem(root, param.first);
         return true;
     } else return false;
 
 }
 
 
-CAVLTree::CAVLTreeNode* CAVLTree::rem(CAVLTreeNode* node, int key){
+CAVLTree::CAVLTreeNode* CAVLTree::rem(CAVLTreeNode* node, std::pair<int,int> param ){
+
     assert( node != nullptr );
 
     CAVLTreeNode *p;
-    if (node->Key == key) {
+
+    if (node->pair.first == param.first) {
+
         if (node->Left == nullptr || node->Right == nullptr) {
+
             if (node->Left == nullptr) {
+
                 p = node->Right;
-            } else {
-                p = node->Left;
+
             }
+
+            else {
+
+                p = node->Left;
+
+            }
+
             delete node;
             return p;
-        } else {
+
+        }
+        else {
+
             for (p = node->Right; p->Left != nullptr; p = p->Left);
-            node->Key = p->Key;
-            node->Right = rem(node->Right, p->Key);
+            node->pair.first = p->pair.first;
+            node->pair.second = p->pair.second;
+            node->Right = rem(node->Right, p->pair.first);
             fixupBalance(node);
             return node;
+
         }
     }
 
-    if (key < node->Key) {
-        node->Left = rem(node->Left, key);
-    } else {
-        node->Right = rem(node->Right, key);
+    if (param.first < node->pair.first) {
+
+        node->Left = rem(node->Left, param.first);
+
+    }
+
+    else {
+
+        node->Right = rem(node->Right, param.first);
+
     }
 
     fixupBalance(node);
     return node;
+
 }
-void CAVLTree::Print(std::ostream &outputstream){
+
+void CAVLTree::Print(std::ostream &outputstream) {
+
     print( outputstream, root );
+
 }
+
 void CAVLTree::print(std::ostream &outputstream, CAVLTreeNode *node) {
 
     if (node == nullptr) {
         return;
     }
 
-    outputstream << node->Key << " ";
+    outputstream << node->pair.second << " ";
 
     print(outputstream, node->Right);
 
