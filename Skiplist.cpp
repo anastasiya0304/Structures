@@ -1,4 +1,4 @@
-#include "SkipList.h"//
+#include "Skiplist.h"
 
 
 
@@ -28,7 +28,7 @@ skiplist::skiplist( int minKey, int maxKey):m_pHeader(nullptr),m_pTail(nullptr),
 
 }
 
-virtual skiplist::~skiplist() {
+skiplist::~skiplist() {
 
     skiplist_node* currNode = m_pHeader->forwards[1];
 

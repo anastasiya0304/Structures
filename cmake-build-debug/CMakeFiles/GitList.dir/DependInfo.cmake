@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/Vipolion/Documents/GitHub/Structures/AVLTree.cpp" "C:/Users/Vipolion/Documents/GitHub/Structures/cmake-build-debug/CMakeFiles/GitList.dir/AVLTree.cpp.obj"
-  "C:/Users/Vipolion/Documents/GitHub/Structures/Skiplist.cpp" "C:/Users/Vipolion/Documents/GitHub/Structures/cmake-build-debug/CMakeFiles/GitList.dir/Skiplist.cpp.obj"
-  "C:/Users/Vipolion/Documents/GitHub/Structures/main.cpp" "C:/Users/Vipolion/Documents/GitHub/Structures/cmake-build-debug/CMakeFiles/GitList.dir/main.cpp.obj"
+  "/Users/Vipolion/Documents/Git/AVLTree.cpp" "/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles/GitList.dir/AVLTree.cpp.o"
+  "/Users/Vipolion/Documents/Git/SkipList.cpp" "/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles/GitList.dir/SkipList.cpp.o"
+  "/Users/Vipolion/Documents/Git/main.cpp" "/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles/GitList.dir/main.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

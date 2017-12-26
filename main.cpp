@@ -1,5 +1,5 @@
 #include "AVLTree.h"
-#include "SkipList.h"
+#include "Skiplist.h"
 #include <iostream>
 #include <sstream>
 #include <fstream>

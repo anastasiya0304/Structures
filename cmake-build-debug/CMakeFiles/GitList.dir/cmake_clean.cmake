@@ -1,11 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/GitList.dir/main.cpp.obj"
-  "CMakeFiles/GitList.dir/Skiplist.cpp.obj"
-  "CMakeFiles/GitList.dir/AVLTree.cpp.obj"
+  "CMakeFiles/GitList.dir/main.cpp.o"
+  "CMakeFiles/GitList.dir/SkipList.cpp.o"
+  "CMakeFiles/GitList.dir/AVLTree.cpp.o"
   "GitList.pdb"
-  "GitList.exe"
-  "GitList.exe.manifest"
-  "libGitList.dll.a"
+  "GitList"
 )
 
 # Per-language clean rules from dependency scanning.

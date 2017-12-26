@@ -4,7 +4,6 @@
 #include <utility>
 #include <fstream>
 #include <iostream>
-#include "stdafx.h"
 
 const int MAXLEVEL = 16;
 
