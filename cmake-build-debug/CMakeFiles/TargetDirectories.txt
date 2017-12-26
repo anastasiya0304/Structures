@@ -1,3 +1,3 @@
-/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles/AVL_Skip.dir
+C:/Users/Vipolion/Documents/AProg/GitList/cmake-build-debug/CMakeFiles/GitList.dir
+C:/Users/Vipolion/Documents/AProg/GitList/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Vipolion/Documents/AProg/GitList/cmake-build-debug/CMakeFiles/rebuild_cache.dir

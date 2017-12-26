@@ -1,5 +1,5 @@
 #include "AVLTree.h"
-#include "Skiplist.h"
+#include "SkipList.h"
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
     assert(fileOut);
 
 
-    SkipList skp(10, 10);
+    skiplist skp(1, 10000);
 
     std::chrono::time_point<std::chrono::high_resolution_clock> start1, stop1;
     start1 = std::chrono::high_resolution_clock::now();
@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
 
         if (line.find("delete") == 0) {
 
-            if (!skp.deleteElement(FindValue(line))) {
+            if (!skp.Remove(FindValue(line))) {
 
                 fileOut << "error" << std::endl;
             }
@@ -59,21 +59,21 @@ int main(int argc, char *argv[]) {
 
         if (line == "print") {
 
-            skp.displayList(fileOut);
+            skp.printList(fileOut);
             fileOut << std::endl;
         }
 
 
         if (line.find("add") == 0) {
 
-            skp.insertElement(FindValue(line));
+            skp.Add(FindValue(line));
 
         }
 
 
         if (line.find("search") == 0) {
 
-            if (!skp.searchElement(FindValue(line))) {
+            if (!skp.Has(FindValue(line))) {
                 fileOut << "error" << std::endl;
 
 
@@ -161,5 +161,4 @@ int main(int argc, char *argv[]) {
 
     }
 }
-
 

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.9)
-project(AVL_Skip)
+project(GitList)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
-add_executable(AVL_Skip main.cpp Skiplist.cpp Skiplist.h AVLTree.cpp AVLTree.h)
+add_executable(GitList main.cpp SkipList.cpp SkipList.h AVLTree.cpp AVLTree.h)

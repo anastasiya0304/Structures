@@ -144,51 +144,51 @@ int CAVLTree::min( CAVLTreeNode* node ) {
 }
 
 
-bool CAVLTree::Has( std::pair<int,int> param  ) {
+bool CAVLTree::Has( int key ) {
 
-    return has( root, param);
+    return has( root, key);
 
 }
 
 
-bool CAVLTree::has( CAVLTreeNode* node, std::pair<int,int> param ){
+bool CAVLTree::has( CAVLTreeNode* node, int key ){
 
     if (node == nullptr) return false;
 
-    if (node->pair.first == param.first) {
+    if (node->pair.first == key) {
         return true;
     }
 
-    if (param.first < node->pair.first) {
+    if (key < node->pair.first) {
 
-        return has(node->Left, param.first);
+        return has(node->Left, key);
 
     }
 
     else {
 
-        return has(node->Right, param.first);
+        return has(node->Right, key);
 
     }
 }
 
-bool CAVLTree::Remove( std::pair<int,int> param ){
+bool CAVLTree::Remove( int key ){
 
-    if (CAVLTree::Has(param.first)) {
-        rem(root, param.first);
+    if (CAVLTree::Has(key)) {
+        rem(root, key);
         return true;
     } else return false;
 
 }
 
 
-CAVLTree::CAVLTreeNode* CAVLTree::rem(CAVLTreeNode* node, std::pair<int,int> param ){
+CAVLTree::CAVLTreeNode* CAVLTree::rem(CAVLTreeNode* node, int key ){
 
     assert( node != nullptr );
 
     CAVLTreeNode *p;
 
-    if (node->pair.first == param.first) {
+    if (node->pair.first == key) {
 
         if (node->Left == nullptr || node->Right == nullptr) {
 
@@ -220,15 +220,15 @@ CAVLTree::CAVLTreeNode* CAVLTree::rem(CAVLTreeNode* node, std::pair<int,int> par
         }
     }
 
-    if (param.first < node->pair.first) {
+    if (key < node->pair.first) {
 
-        node->Left = rem(node->Left, param.first);
+        node->Left = rem(node->Left, key);
 
     }
 
     else {
 
-        node->Right = rem(node->Right, param.first);
+        node->Right = rem(node->Right, key);
 
     }
 
@@ -254,7 +254,5 @@ void CAVLTree::print(std::ostream &outputstream, CAVLTreeNode *node) {
     print(outputstream, node->Right);
 
     print(outputstream, node->Left);
-
-
 
 }

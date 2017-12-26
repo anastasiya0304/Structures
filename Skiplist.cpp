@@ -1,161 +1,165 @@
-//
-// Created by Vipolion on 20.12.2017.
-//
+#include "SkipList.h"//
 
-#include "Skiplist.h"
 
-Node::Node(int key, int level) {
 
-    this->key = key;
-    forward = new Node*[level+1];
-    std::memset(forward, 0, sizeof(Node*)*(level+1));
+skiplist_node::skiplist_node(int searchKey) {
+
+    data.first=searchKey;
+
+    for ( int i=1; i<=MAXLEVEL; i++ ) { forwards[i] = nullptr; }
 
 }
 
 
-SkipList::SkipList(int MAXLVL, float P) {
-    this->MAXLVL = MAXLVL;
-    this->P = P;
-    level = 0;
+skiplist_node::skiplist_node(std::pair<int,int>newdata):data(newdata) {
 
+    for ( int i=1; i<=MAXLEVEL; i++ ) { forwards[i] = nullptr; }
 
-    header = new Node(-1, MAXLVL);
 }
 
+skiplist::skiplist( int minKey, int maxKey):m_pHeader(nullptr),m_pTail(nullptr),
+                                  max_curr_level(1),max_level(MAXLEVEL),
+                                  m_minKey(minKey),m_maxKey(maxKey) {
 
-int SkipList::randomLevel() {
+    m_pHeader = new skiplist_node(m_minKey);
+    m_pTail = new skiplist_node(m_maxKey);
 
-    float r = (float)::random()/RAND_MAX;
-    int lvl = 0;
-    while(r < P && lvl < MAXLVL) {
+    for ( int i=1; i<=MAXLEVEL; i++ ) { m_pHeader->forwards[i] = m_pTail; }
 
-        lvl++;
-        r = (float)random()/RAND_MAX;
+}
+
+virtual skiplist::~skiplist() {
+
+    skiplist_node* currNode = m_pHeader->forwards[1];
+
+    while ( currNode != m_pTail ) {
+
+        skiplist_node* tempNode = currNode;
+        currNode = currNode->forwards[1];
+
+        delete tempNode;
     }
 
-    return lvl;
+    delete m_pHeader;
+
+    delete m_pTail;
 }
 
+void skiplist::Add(std::pair<int, int> newdata) {
 
-Node* SkipList::createNode(int key, int level) {
+    skiplist_node* update[MAXLEVEL];
+    skiplist_node* currNode = m_pHeader;
 
-    Node *n = new Node(key, level);
-    return n;
-}
+    for(int level=max_curr_level; level >=1; level--) {
 
+        while ( currNode->forwards[level]->data.first < newdata.first ) { currNode = currNode->forwards[level]; }
 
-void SkipList::insertElement(int key) {
+        update[level] = currNode;
 
-    Node *current = header;
-
-    Node *update[MAXLVL+1];
-    memset(update, 0, sizeof(Node*)*(MAXLVL+1));
-
-    for(int i = level; i >= 0; i--) {
-
-        while(current->forward[i] != nullptr &&
-              current->forward[i]->key < key)
-            current = current->forward[i];
-        update[i] = current;
     }
 
-    current = current->forward[0];
+    currNode = currNode->forwards[1];
 
-    if (current == nullptr || current->key != key) {
+    if ( currNode->data.first == newdata.first ) { currNode->data.second = newdata.second; }
 
-        int rlevel = randomLevel();
+    else {
 
-        if(rlevel > level) {
+        int newlevel = randomLevel();
 
-            for(int i=level+1;i<rlevel+1;i++)
-                update[i] = header;
+        if ( newlevel > max_curr_level ) {
 
-            level = rlevel;
+            for ( int level = max_curr_level+1; level <= newlevel; level++ ) { update[level] = m_pHeader; }
+
+            max_curr_level = newlevel;
+
         }
 
-        Node* n = createNode(key, rlevel);
+        currNode = new skiplist_node(newdata);
 
-        for(int i=0;i<=rlevel;i++) {
+        for ( int lv=1; lv<=max_curr_level; lv++ ) {
 
-            n->forward[i] = update[i]->forward[i];
-            update[i]->forward[i] = n;
+            currNode->forwards[lv] = update[lv]->forwards[lv];
+            update[lv]->forwards[lv] = currNode;
+
         }
-
-        std::cout<<"Successfully Inserted key "<<key<<"\n";
-
     }
 }
 
 
-bool SkipList::deleteElement(int key) {
+bool skiplist::Remove(int searchKey) {
 
-    Node *current = header;
+    if (!Has(searchKey)){ return false; }
 
-    Node *update[MAXLVL+1];
-    memset(update, 0, sizeof(Node*)*(MAXLVL+1));
+    skiplist_node* update[MAXLEVEL];
+    skiplist_node* currNode = m_pHeader;
 
-    for(int i = level; i >= 0; i--) {
+    for(int level=max_curr_level; level >=1; level--) {
 
-        while(current->forward[i] != nullptr  &&
-              current->forward[i]->key < key)
-            current = current->forward[i];
-        update[i] = current;
+        while ( currNode->forwards[level]->data.first < searchKey ) { currNode = currNode->forwards[level]; }
+
+        update[level] = currNode;
+
     }
 
-    current = current->forward[0];
+    currNode = currNode->forwards[1];
 
-    if(current != nullptr and current->key == key) {
+    if ( currNode->data.first == searchKey ) {
 
-        for(int i=0;i<=level;i++) {
+        for ( int lv = 1; lv <= max_curr_level; lv++ ) {
 
-            if(update[i]->forward[i] != current)
+            if ( update[lv]->forwards[lv] != currNode ) { break; }
 
-                break;
+            update[lv]->forwards[lv] = currNode->forwards[lv];
 
-            update[i]->forward[i] = current->forward[i];
         }
 
-        while(level>0 && header->forward[level] == 0) { level--; }
+        delete currNode;
 
-        return true;
+
+        while ( max_curr_level > 1 && m_pHeader->forwards[max_curr_level] == nullptr ) { max_curr_level--; }
+
     }
 
-    return false;
+    return true;
 }
 
 
-bool SkipList::searchElement(int key) {
+bool skiplist::Has(int searchKey) {
 
-    Node *current = header;
+    skiplist_node* currNode = m_pHeader;
 
-    for(int i = level; i >= 0; i--) {
+    for(int level=max_curr_level; level >=1; level--) {
 
-        while(current->forward[i] &&
-              current->forward[i]->key < key)
-            current = current->forward[i];
+        while ( currNode->forwards[level]->data.first < searchKey ) { currNode = currNode->forwards[level]; }
 
     }
 
-    current = current->forward[0];
+    currNode = currNode->forwards[1];
 
-    if(current and current->key == key)
-        return true;
-    else return false;
+    return currNode->data.first == searchKey;
+
 }
 
-void SkipList::displayList(std::ostream &outputstream) {
 
+int skiplist::randomLevel() {
 
-    for (int i=0;i<=level;i++) {
+    int level = 1;
+    double p = 0.5;
 
-        Node *node = header->forward[i];
-        outputstream <<  "Level " << i << ": ";
-        while (node != nullptr) {
+    while ( uniformRandom() < p && level < MAXLEVEL ) { level++; }
 
-            outputstream << node->key<<" ";
-            node = node->forward[i];
-        }
+    return level;
 
-        outputstream << "\n";
+}
+
+void skiplist::printList(std::ostream &outputstream) {
+
+    skiplist_node* currNode = m_pHeader->forwards[1];
+
+    while ( currNode != m_pTail ) {
+
+        outputstream << currNode->data.second << " " << std::endl;
+        currNode = currNode->forwards[1];
+
     }
 }

@@ -1,11 +1,3 @@
-//
-// Created by Vipolion on 20.12.2017.
-//
-
-#ifndef AVL_SKIP_AVLTREE_H
-#define AVL_SKIP_AVLTREE_H
-
-#endif //AVL_SKIP_AVLTREE_H
 
 #include <cmath>
 #include <fstream>
@@ -21,9 +13,9 @@ public:
         root= nullptr;
     }
 
-    bool Has( std::pair<int,int> param );
+    bool Has( int key );
     void Add( std::pair<int,int> param  );
-    bool Remove( std::pair<int,int> param );
+    bool Remove( int key );
     void Print(std::ostream&);
     int Min();
     int Max();
@@ -49,9 +41,7 @@ private:
     static void rotateRight( CAVLTreeNode* node );
     static int max( CAVLTreeNode* node );
     static int min( CAVLTreeNode* node );
-    static bool has( CAVLTreeNode* node, std::pair<int,int> param );
-    static CAVLTreeNode* rem(CAVLTreeNode* node, std::pair<int,int> param );
+    static bool has( CAVLTreeNode* node, int key );
+    static CAVLTreeNode* rem(CAVLTreeNode* node, int key );
     static void print(std::ostream &outputstream, CAVLTreeNode *node);
 };
-
-
