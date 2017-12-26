@@ -4,6 +4,7 @@
 #include <utility>
 #include <fstream>
 #include <iostream>
+#include "stdafx.h"
 
 const int MAXLEVEL = 16;
 
@@ -41,7 +42,7 @@ public:
 
 protected:
 
-    double uniformRandom() { return std::rand() / double(RAND_MAX); }
+    double uniformRandom() { return rand() / double(RAND_MAX); }
 
     int randomLevel();
     int m_minKey;
