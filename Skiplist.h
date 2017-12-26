@@ -33,6 +33,8 @@ public:
     void Add(std::pair<int, int>newdata);
     bool Remove(int searchKey);
     bool Has(int searchKey);
+    int Max();
+    int Min();
     void printList(std::ostream &outputstream);
 
     const int max_level;

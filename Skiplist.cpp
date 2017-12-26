@@ -163,3 +163,39 @@ void skiplist::printList(std::ostream &outputstream) {
 
     }
 }
+
+int skiplist::Max() {
+
+    int max = -1;
+    skiplist_node* currNode = m_pHeader;
+
+    for(int level=max_curr_level; level >=1; level--) {
+
+        while ( currNode->forwards[level] ) {
+
+            if ( currNode->data.second > max ){ max = currNode->data.second; }
+        }
+    }
+
+    return max;
+
+};
+
+int skiplist::Min() {
+
+    int min = INT_MAX;
+    skiplist_node* currNode = m_pHeader;
+
+    for(int level=max_curr_level; level >=1; level--) {
+
+        while ( currNode->forwards[level] ) {
+
+            if ( currNode->data.second < min ){ min = currNode->data.second; }
+        }
+    }
+
+    return  min;
+
+};
+
+int skiplist::Min(){};
