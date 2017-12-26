@@ -178,7 +178,7 @@
 
                     }
 
-                    if (line.find("min") == 0) {
+                    if (line.find("max") == 0) {
 
                         fileOut << skpl.Max() << std::endl;
 
