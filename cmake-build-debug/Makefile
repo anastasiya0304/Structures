@@ -47,10 +47,10 @@ RM = "C:\Program Files\JetBrains\CLion 2017.3\bin\cmake\bin\cmake.exe" -E remove
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Vipolion\Documents\AProg\GitList
+CMAKE_SOURCE_DIR = C:\Users\Vipolion\Documents\GitHub\Structures
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Vipolion\Documents\AProg\GitList\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\Vipolion\Documents\GitHub\Structures\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,9 +79,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Vipolion\Documents\AProg\GitList\cmake-build-debug\CMakeFiles C:\Users\Vipolion\Documents\AProg\GitList\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Vipolion\Documents\GitHub\Structures\cmake-build-debug\CMakeFiles C:\Users\Vipolion\Documents\GitHub\Structures\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Vipolion\Documents\AProg\GitList\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Vipolion\Documents\GitHub\Structures\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -149,32 +149,32 @@ AVLTree.cpp.s:
 	$(MAKE) -f CMakeFiles\GitList.dir\build.make CMakeFiles/GitList.dir/AVLTree.cpp.s
 .PHONY : AVLTree.cpp.s
 
-SkipList.obj: SkipList.cpp.obj
+Skiplist.obj: Skiplist.cpp.obj
 
-.PHONY : SkipList.obj
+.PHONY : Skiplist.obj
 
 # target to build an object file
-SkipList.cpp.obj:
-	$(MAKE) -f CMakeFiles\GitList.dir\build.make CMakeFiles/GitList.dir/SkipList.cpp.obj
-.PHONY : SkipList.cpp.obj
+Skiplist.cpp.obj:
+	$(MAKE) -f CMakeFiles\GitList.dir\build.make CMakeFiles/GitList.dir/Skiplist.cpp.obj
+.PHONY : Skiplist.cpp.obj
 
-SkipList.i: SkipList.cpp.i
+Skiplist.i: Skiplist.cpp.i
 
-.PHONY : SkipList.i
+.PHONY : Skiplist.i
 
 # target to preprocess a source file
-SkipList.cpp.i:
-	$(MAKE) -f CMakeFiles\GitList.dir\build.make CMakeFiles/GitList.dir/SkipList.cpp.i
-.PHONY : SkipList.cpp.i
+Skiplist.cpp.i:
+	$(MAKE) -f CMakeFiles\GitList.dir\build.make CMakeFiles/GitList.dir/Skiplist.cpp.i
+.PHONY : Skiplist.cpp.i
 
-SkipList.s: SkipList.cpp.s
+Skiplist.s: Skiplist.cpp.s
 
-.PHONY : SkipList.s
+.PHONY : Skiplist.s
 
 # target to generate assembly for a file
-SkipList.cpp.s:
-	$(MAKE) -f CMakeFiles\GitList.dir\build.make CMakeFiles/GitList.dir/SkipList.cpp.s
-.PHONY : SkipList.cpp.s
+Skiplist.cpp.s:
+	$(MAKE) -f CMakeFiles\GitList.dir\build.make CMakeFiles/GitList.dir/Skiplist.cpp.s
+.PHONY : Skiplist.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -215,9 +215,9 @@ help:
 	@echo ... AVLTree.obj
 	@echo ... AVLTree.i
 	@echo ... AVLTree.s
-	@echo ... SkipList.obj
-	@echo ... SkipList.i
-	@echo ... SkipList.s
+	@echo ... Skiplist.obj
+	@echo ... Skiplist.i
+	@echo ... Skiplist.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

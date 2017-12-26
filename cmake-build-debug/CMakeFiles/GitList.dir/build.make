@@ -42,10 +42,10 @@ RM = "C:\Program Files\JetBrains\CLion 2017.3\bin\cmake\bin\cmake.exe" -E remove
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Vipolion\Documents\AProg\GitList
+CMAKE_SOURCE_DIR = C:\Users\Vipolion\Documents\GitHub\Structures
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Vipolion\Documents\AProg\GitList\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\Vipolion\Documents\GitHub\Structures\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/GitList.dir/depend.make
@@ -58,16 +58,16 @@ include CMakeFiles/GitList.dir/flags.make
 
 CMakeFiles/GitList.dir/main.cpp.obj: CMakeFiles/GitList.dir/flags.make
 CMakeFiles/GitList.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Vipolion\Documents\AProg\GitList\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/GitList.dir/main.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\GitList.dir\main.cpp.obj -c C:\Users\Vipolion\Documents\AProg\GitList\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Vipolion\Documents\GitHub\Structures\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/GitList.dir/main.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\GitList.dir\main.cpp.obj -c C:\Users\Vipolion\Documents\GitHub\Structures\main.cpp
 
 CMakeFiles/GitList.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GitList.dir/main.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Vipolion\Documents\AProg\GitList\main.cpp > CMakeFiles\GitList.dir\main.cpp.i
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Vipolion\Documents\GitHub\Structures\main.cpp > CMakeFiles\GitList.dir\main.cpp.i
 
 CMakeFiles/GitList.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GitList.dir/main.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Vipolion\Documents\AProg\GitList\main.cpp -o CMakeFiles\GitList.dir\main.cpp.s
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Vipolion\Documents\GitHub\Structures\main.cpp -o CMakeFiles\GitList.dir\main.cpp.s
 
 CMakeFiles/GitList.dir/main.cpp.obj.requires:
 
@@ -80,42 +80,42 @@ CMakeFiles/GitList.dir/main.cpp.obj.provides: CMakeFiles/GitList.dir/main.cpp.ob
 CMakeFiles/GitList.dir/main.cpp.obj.provides.build: CMakeFiles/GitList.dir/main.cpp.obj
 
 
-CMakeFiles/GitList.dir/SkipList.cpp.obj: CMakeFiles/GitList.dir/flags.make
-CMakeFiles/GitList.dir/SkipList.cpp.obj: ../SkipList.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Vipolion\Documents\AProg\GitList\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/GitList.dir/SkipList.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\GitList.dir\SkipList.cpp.obj -c C:\Users\Vipolion\Documents\AProg\GitList\SkipList.cpp
+CMakeFiles/GitList.dir/Skiplist.cpp.obj: CMakeFiles/GitList.dir/flags.make
+CMakeFiles/GitList.dir/Skiplist.cpp.obj: ../Skiplist.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Vipolion\Documents\GitHub\Structures\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/GitList.dir/Skiplist.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\GitList.dir\Skiplist.cpp.obj -c C:\Users\Vipolion\Documents\GitHub\Structures\Skiplist.cpp
 
-CMakeFiles/GitList.dir/SkipList.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GitList.dir/SkipList.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Vipolion\Documents\AProg\GitList\SkipList.cpp > CMakeFiles\GitList.dir\SkipList.cpp.i
+CMakeFiles/GitList.dir/Skiplist.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GitList.dir/Skiplist.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Vipolion\Documents\GitHub\Structures\Skiplist.cpp > CMakeFiles\GitList.dir\Skiplist.cpp.i
 
-CMakeFiles/GitList.dir/SkipList.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GitList.dir/SkipList.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Vipolion\Documents\AProg\GitList\SkipList.cpp -o CMakeFiles\GitList.dir\SkipList.cpp.s
+CMakeFiles/GitList.dir/Skiplist.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GitList.dir/Skiplist.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Vipolion\Documents\GitHub\Structures\Skiplist.cpp -o CMakeFiles\GitList.dir\Skiplist.cpp.s
 
-CMakeFiles/GitList.dir/SkipList.cpp.obj.requires:
+CMakeFiles/GitList.dir/Skiplist.cpp.obj.requires:
 
-.PHONY : CMakeFiles/GitList.dir/SkipList.cpp.obj.requires
+.PHONY : CMakeFiles/GitList.dir/Skiplist.cpp.obj.requires
 
-CMakeFiles/GitList.dir/SkipList.cpp.obj.provides: CMakeFiles/GitList.dir/SkipList.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\GitList.dir\build.make CMakeFiles/GitList.dir/SkipList.cpp.obj.provides.build
-.PHONY : CMakeFiles/GitList.dir/SkipList.cpp.obj.provides
+CMakeFiles/GitList.dir/Skiplist.cpp.obj.provides: CMakeFiles/GitList.dir/Skiplist.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\GitList.dir\build.make CMakeFiles/GitList.dir/Skiplist.cpp.obj.provides.build
+.PHONY : CMakeFiles/GitList.dir/Skiplist.cpp.obj.provides
 
-CMakeFiles/GitList.dir/SkipList.cpp.obj.provides.build: CMakeFiles/GitList.dir/SkipList.cpp.obj
+CMakeFiles/GitList.dir/Skiplist.cpp.obj.provides.build: CMakeFiles/GitList.dir/Skiplist.cpp.obj
 
 
 CMakeFiles/GitList.dir/AVLTree.cpp.obj: CMakeFiles/GitList.dir/flags.make
 CMakeFiles/GitList.dir/AVLTree.cpp.obj: ../AVLTree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Vipolion\Documents\AProg\GitList\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GitList.dir/AVLTree.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\GitList.dir\AVLTree.cpp.obj -c C:\Users\Vipolion\Documents\AProg\GitList\AVLTree.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Vipolion\Documents\GitHub\Structures\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GitList.dir/AVLTree.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\GitList.dir\AVLTree.cpp.obj -c C:\Users\Vipolion\Documents\GitHub\Structures\AVLTree.cpp
 
 CMakeFiles/GitList.dir/AVLTree.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GitList.dir/AVLTree.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Vipolion\Documents\AProg\GitList\AVLTree.cpp > CMakeFiles\GitList.dir\AVLTree.cpp.i
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Vipolion\Documents\GitHub\Structures\AVLTree.cpp > CMakeFiles\GitList.dir\AVLTree.cpp.i
 
 CMakeFiles/GitList.dir/AVLTree.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GitList.dir/AVLTree.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Vipolion\Documents\AProg\GitList\AVLTree.cpp -o CMakeFiles\GitList.dir\AVLTree.cpp.s
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Vipolion\Documents\GitHub\Structures\AVLTree.cpp -o CMakeFiles\GitList.dir\AVLTree.cpp.s
 
 CMakeFiles/GitList.dir/AVLTree.cpp.obj.requires:
 
@@ -131,20 +131,20 @@ CMakeFiles/GitList.dir/AVLTree.cpp.obj.provides.build: CMakeFiles/GitList.dir/AV
 # Object files for target GitList
 GitList_OBJECTS = \
 "CMakeFiles/GitList.dir/main.cpp.obj" \
-"CMakeFiles/GitList.dir/SkipList.cpp.obj" \
+"CMakeFiles/GitList.dir/Skiplist.cpp.obj" \
 "CMakeFiles/GitList.dir/AVLTree.cpp.obj"
 
 # External object files for target GitList
 GitList_EXTERNAL_OBJECTS =
 
 GitList.exe: CMakeFiles/GitList.dir/main.cpp.obj
-GitList.exe: CMakeFiles/GitList.dir/SkipList.cpp.obj
+GitList.exe: CMakeFiles/GitList.dir/Skiplist.cpp.obj
 GitList.exe: CMakeFiles/GitList.dir/AVLTree.cpp.obj
 GitList.exe: CMakeFiles/GitList.dir/build.make
 GitList.exe: CMakeFiles/GitList.dir/linklibs.rsp
 GitList.exe: CMakeFiles/GitList.dir/objects1.rsp
 GitList.exe: CMakeFiles/GitList.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Vipolion\Documents\AProg\GitList\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable GitList.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Vipolion\Documents\GitHub\Structures\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable GitList.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\GitList.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -153,7 +153,7 @@ CMakeFiles/GitList.dir/build: GitList.exe
 .PHONY : CMakeFiles/GitList.dir/build
 
 CMakeFiles/GitList.dir/requires: CMakeFiles/GitList.dir/main.cpp.obj.requires
-CMakeFiles/GitList.dir/requires: CMakeFiles/GitList.dir/SkipList.cpp.obj.requires
+CMakeFiles/GitList.dir/requires: CMakeFiles/GitList.dir/Skiplist.cpp.obj.requires
 CMakeFiles/GitList.dir/requires: CMakeFiles/GitList.dir/AVLTree.cpp.obj.requires
 
 .PHONY : CMakeFiles/GitList.dir/requires
@@ -163,6 +163,6 @@ CMakeFiles/GitList.dir/clean:
 .PHONY : CMakeFiles/GitList.dir/clean
 
 CMakeFiles/GitList.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Vipolion\Documents\AProg\GitList C:\Users\Vipolion\Documents\AProg\GitList C:\Users\Vipolion\Documents\AProg\GitList\cmake-build-debug C:\Users\Vipolion\Documents\AProg\GitList\cmake-build-debug C:\Users\Vipolion\Documents\AProg\GitList\cmake-build-debug\CMakeFiles\GitList.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Vipolion\Documents\GitHub\Structures C:\Users\Vipolion\Documents\GitHub\Structures C:\Users\Vipolion\Documents\GitHub\Structures\cmake-build-debug C:\Users\Vipolion\Documents\GitHub\Structures\cmake-build-debug C:\Users\Vipolion\Documents\GitHub\Structures\cmake-build-debug\CMakeFiles\GitList.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/GitList.dir/depend
 

@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/Vipolion/Documents/AProg/GitList/AVLTree.cpp" "C:/Users/Vipolion/Documents/AProg/GitList/cmake-build-debug/CMakeFiles/GitList.dir/AVLTree.cpp.obj"
-  "C:/Users/Vipolion/Documents/AProg/GitList/SkipList.cpp" "C:/Users/Vipolion/Documents/AProg/GitList/cmake-build-debug/CMakeFiles/GitList.dir/SkipList.cpp.obj"
-  "C:/Users/Vipolion/Documents/AProg/GitList/main.cpp" "C:/Users/Vipolion/Documents/AProg/GitList/cmake-build-debug/CMakeFiles/GitList.dir/main.cpp.obj"
+  "C:/Users/Vipolion/Documents/GitHub/Structures/AVLTree.cpp" "C:/Users/Vipolion/Documents/GitHub/Structures/cmake-build-debug/CMakeFiles/GitList.dir/AVLTree.cpp.obj"
+  "C:/Users/Vipolion/Documents/GitHub/Structures/Skiplist.cpp" "C:/Users/Vipolion/Documents/GitHub/Structures/cmake-build-debug/CMakeFiles/GitList.dir/Skiplist.cpp.obj"
+  "C:/Users/Vipolion/Documents/GitHub/Structures/main.cpp" "C:/Users/Vipolion/Documents/GitHub/Structures/cmake-build-debug/CMakeFiles/GitList.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

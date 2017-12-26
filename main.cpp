@@ -7,9 +7,21 @@
 
 
 
+int FindKey(const std::string &str) {
+    std::istringstream iss(str);
+    std::string tmp;
+    iss >> tmp;
+    tmp.clear();
+    iss >> tmp;
+    int key = atoi(tmp.c_str());
+    return key;
+}
+
 int FindValue(const std::string &str) {
     std::istringstream iss(str);
     std::string tmp;
+    iss >> tmp;
+    tmp.clear();
     iss >> tmp;
     tmp.clear();
     iss >> tmp;
@@ -30,6 +42,7 @@ bool FileIsEqual(const std::string &firstFileName, const std::string &secondFile
     return (buffer1 == buffer2);
 }
 
+
 int main(int argc, char *argv[]) {
 
     std::string line;
@@ -39,126 +52,160 @@ int main(int argc, char *argv[]) {
     assert(fileOut);
 
 
-    skiplist skp(1, 10000);
+    skiplist skpl(1, 10000);
+    CAVLTree avlt;
 
-    std::chrono::time_point<std::chrono::high_resolution_clock> start1, stop1;
-    start1 = std::chrono::high_resolution_clock::now();
 
+    std::chrono::time_point<std::chrono::high_resolution_clock> start, stop;
+    start = std::chrono::high_resolution_clock::now();
 
     while (getline(fileIn, line)) {
 
         if (line.find("delete") == 0) {
 
-            if (!skp.Remove(FindValue(line))) {
+            if (!avlt.Remove(FindKey(line))) {
 
-                fileOut << "error" << std::endl;
+                fileOut << "error1" << std::endl;
+
             }
 
         }
 
+        if (line.find("print") == 0) {
 
-        if (line == "print") {
-
-            skp.printList(fileOut);
+            fileOut << "structure: ";
+            avlt.Print(fileOut);
             fileOut << std::endl;
-        }
 
+        }
 
         if (line.find("add") == 0) {
 
-            skp.Add(FindValue(line));
+            std::pair<int,int> pair;
+            pair.first=FindKey(line);
+            pair.second=FindValue(line);
+            avlt.Add(pair);
 
         }
 
+        if (line.find("has") == 0) {
 
-        if (line.find("search") == 0) {
+            if (!avlt.Has(FindKey(line))) {
 
-            if (!skp.Has(FindValue(line))) {
-                fileOut << "error" << std::endl;
+                fileOut << FindValue(line) << " hasn't found" << std::endl;
 
+            } else {
+
+                fileOut << FindKey(line) << " has found" << std::endl;
 
             }
         }
 
+        if (line.find("min") == 0) {
 
-        stop1 = std::chrono::high_resolution_clock::now();
-        std::cout << "runtime = " << std::chrono::duration_cast<std::chrono::microseconds>(stop1 - start1).count() << std::endl;
-
-
-        CAVLTree avlTree;
-
-
-        fileIn.clear();
-        fileIn.seekg(0);
-
-
-        std::chrono::time_point<std::chrono::high_resolution_clock> start, stop;
-        start = std::chrono::high_resolution_clock::now();
-
-        while (getline(fileIn, line)) {
-
-            if (line.find("delete") == 0) {
-
-                if (!avlTree.Remove(FindValue(line))) {
-
-                    fileOut << "error1" << std::endl;
-
-                }
-
-            }
-
-            if (line.find("print") == 0) {
-
-                avlTree.Print(fileOut);
-                fileOut << std::endl;
-            }
-
-            if (line.find("add") == 0) {
-
-                avlTree.Add(FindValue(line));
-
-            }
-
-            if (line.find("search") == 0) {
-
-                if (!avlTree.Has(FindValue(line))) {
-
-                    fileOut << "false" << std::endl;
-                }
-
-            }
-
-            if (line == "min") {
-
-                fileOut << avlTree.Min() << std::endl;
-
-            }
-
-            if (line == "max") {
-
-                fileOut << avlTree.Max() << std::endl;
-
-            }
+            fileOut << avlt.Min() << std::endl;
 
         }
 
-        stop = std::chrono::high_resolution_clock::now();
-        std::cout << "runtime = " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count()
-                  << std::endl;
+        if (line.find("min") == 0) {
 
-        fileIn.close();
+            fileOut << avlt.Max() << std::endl;
 
-        if (FileIsEqual(argv[2], argv[3])) {
-
-            std::cout << "Correct" << std::endl;
-
-        } else {
-
-            std::cout << "Not correct" << std::endl;
         }
-
-        fileOut.close();
 
     }
-}
+
+
+
+        stop = std::chrono::high_resolution_clock::now();
+
+        std::cout << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << std::endl;
+
+
+    fileIn.clear();
+    fileIn.seekg(0);
+    fileOut.clear();
+    fileOut.seekp(0);
+
+
+            start = std::chrono::high_resolution_clock::now();
+
+            while (getline(fileIn, line)) {
+
+                if (line.find("delete") == 0) {
+
+                    if (!skpl.Remove(FindValue(line))) {
+
+                        fileOut << "error1" << std::endl;
+
+                    }
+
+                }
+
+                if (line.find("print") == 0) {
+
+                    fileOut << "structure: ";
+                    skpl.printList(fileOut);
+                    fileOut << std::endl;
+
+                }
+
+                if (line.find("add") == 0) {
+
+                    std::pair<int,int> pair;
+                    pair.first=FindKey(line);
+                    pair.second=FindValue(line);
+                    skpl.Add(pair);
+
+                }
+
+                if (line.find("has") == 0) {
+
+                    if (!skpl.Has(FindKey(line))) {
+
+                        fileOut << FindKey(line) << " hasn't found" << std::endl;
+
+                    } else {
+
+                        fileOut << FindKey(line) << " has found" << std::endl;
+                    }
+
+                }
+
+//                if (line.find("min") == 0) {
+//
+//                    fileOut << skpl.Min() << std::endl;
+//
+//                }
+//
+//                if (line.find("min") == 0) {
+//
+//                    fileOut << skpl.Max() << std::endl;
+//
+//                }
+
+            }
+
+
+            stop = std::chrono::high_resolution_clock::now();
+            std::cout  << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << std::endl;
+
+
+            fileIn.close();
+
+
+            if ( FileIsEqual(argv[2], argv[3]) ) {
+
+                 std::cout << "Correct" << std::endl;
+
+                }
+
+                 else {
+
+                    std::cout << "Not correct" << std::endl;
+                }
+
+         fileOut.close();
+
+    }
 

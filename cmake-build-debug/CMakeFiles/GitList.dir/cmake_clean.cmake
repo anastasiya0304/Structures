@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/GitList.dir/main.cpp.obj"
-  "CMakeFiles/GitList.dir/SkipList.cpp.obj"
+  "CMakeFiles/GitList.dir/Skiplist.cpp.obj"
   "CMakeFiles/GitList.dir/AVLTree.cpp.obj"
   "GitList.pdb"
   "GitList.exe"
