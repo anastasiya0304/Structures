@@ -1,28 +1,28 @@
-add 13
-add 24
-add 745
-add 231
-add 2
-add 87
-add 645
-add 23
-add 98
-add 11
-add 24
-add 9
-add 1254
-add 1997
-add 32
-add 54
-add 91
-add 45
-add 32
-add 81
-add 88
-add 92
-add 632
-add 999
-add 4
+add 13 25
+add 24 53
+add 745 12
+add 231 7
+add 2 19
+add 87 45
+add 645 9
+add 23 65
+add 98 13
+add 11 15
+add 24 22
+add 9 54
+add 1254 67
+add 1997 89
+add 32 55
+add 54 89
+add 91 11
+add 45 567
+add 32 345
+add 81 234
+add 88 55
+add 92 12
+add 632 14
+add 999 55
+add 4 2
 delete 11
 delete 4
 delete 24
