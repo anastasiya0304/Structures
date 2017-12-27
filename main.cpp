@@ -45,7 +45,7 @@ bool FileIsEqual(const std::string &firstFileName, const std::string &secondFile
 }
 
 int main(int argc, char *argv[]) {
-   
+
     std::string line;
     std::ifstream fileIn(argv[1]);
     assert(fileIn);
@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
             
         }
        
-        if (line.find("has") == 0) {
+        if (line.find("search") == 0) {
            
             fileOut << avlTree.Has(FindKey(line)) << std::endl;
            
