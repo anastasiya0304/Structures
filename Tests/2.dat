@@ -1,8 +1,8 @@
-add 13
-add 21
-add 65
-add 2
-add 9
+add 13 15
+add 21 7
+add 65 23
+add 2 18
+add 9 100
 print
 has 2
 has 13
