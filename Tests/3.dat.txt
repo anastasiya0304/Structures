@@ -6,9 +6,9 @@ add 12 14
 add 31 255
 add 1 18
 add 976 47
-add 23452 11
-add 8675 33
-add 3452 52
+add 234 11
+add 867 33
+add 345 52
 add 776 51
 add 443 53
 add 221 13
@@ -38,7 +38,7 @@ add 8 49
 add 34 36
 add 45 497
 add 999 2
-add 2341 37
+add 234 37
 add 555 59
 add 781 12
 add 123 9
@@ -46,15 +46,15 @@ add 932 155
 add 415 46
 add 35 178
 add 77 55
-add 1313 694
+add 131 694
 add 3 7
 delete 12
 delete 31
 delete 1
 delete 976
-delete 23452
-delete 8675
-delete 3452
+delete 234
+delete 867
+delete 345
 delete 776
 delete 443
 delete 221
@@ -84,7 +84,7 @@ delete 8
 delete 34
 delete 45
 delete 999
-delete 2341
+delete 234
 delete 555
 delete 781
 delete 123
