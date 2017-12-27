@@ -2,7 +2,7 @@
 #include <sstream>
 #include <fstream>
 #include <chrono>
-#include "AVTree/AVLTree.cpp"
+#include "AVTree/AVLTree.h"
 #include "Skiplist/Skiplist.h"
 
 
