@@ -123,59 +123,59 @@ GitList/fast:
 	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/build
 .PHONY : GitList/fast
 
-AVLTree.o: AVLTree.cpp.o
+AVTree/AVLTree.o: AVTree/AVLTree.cpp.o
 
-.PHONY : AVLTree.o
-
-# target to build an object file
-AVLTree.cpp.o:
-	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/AVLTree.cpp.o
-.PHONY : AVLTree.cpp.o
-
-AVLTree.i: AVLTree.cpp.i
-
-.PHONY : AVLTree.i
-
-# target to preprocess a source file
-AVLTree.cpp.i:
-	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/AVLTree.cpp.i
-.PHONY : AVLTree.cpp.i
-
-AVLTree.s: AVLTree.cpp.s
-
-.PHONY : AVLTree.s
-
-# target to generate assembly for a file
-AVLTree.cpp.s:
-	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/AVLTree.cpp.s
-.PHONY : AVLTree.cpp.s
-
-SkipList.o: SkipList.cpp.o
-
-.PHONY : SkipList.o
+.PHONY : AVTree/AVLTree.o
 
 # target to build an object file
-SkipList.cpp.o:
-	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/SkipList.cpp.o
-.PHONY : SkipList.cpp.o
+AVTree/AVLTree.cpp.o:
+	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o
+.PHONY : AVTree/AVLTree.cpp.o
 
-SkipList.i: SkipList.cpp.i
+AVTree/AVLTree.i: AVTree/AVLTree.cpp.i
 
-.PHONY : SkipList.i
+.PHONY : AVTree/AVLTree.i
 
 # target to preprocess a source file
-SkipList.cpp.i:
-	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/SkipList.cpp.i
-.PHONY : SkipList.cpp.i
+AVTree/AVLTree.cpp.i:
+	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.i
+.PHONY : AVTree/AVLTree.cpp.i
 
-SkipList.s: SkipList.cpp.s
+AVTree/AVLTree.s: AVTree/AVLTree.cpp.s
 
-.PHONY : SkipList.s
+.PHONY : AVTree/AVLTree.s
 
 # target to generate assembly for a file
-SkipList.cpp.s:
-	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/SkipList.cpp.s
-.PHONY : SkipList.cpp.s
+AVTree/AVLTree.cpp.s:
+	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.s
+.PHONY : AVTree/AVLTree.cpp.s
+
+Skiplist/Skiplist.o: Skiplist/Skiplist.cpp.o
+
+.PHONY : Skiplist/Skiplist.o
+
+# target to build an object file
+Skiplist/Skiplist.cpp.o:
+	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o
+.PHONY : Skiplist/Skiplist.cpp.o
+
+Skiplist/Skiplist.i: Skiplist/Skiplist.cpp.i
+
+.PHONY : Skiplist/Skiplist.i
+
+# target to preprocess a source file
+Skiplist/Skiplist.cpp.i:
+	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.i
+.PHONY : Skiplist/Skiplist.cpp.i
+
+Skiplist/Skiplist.s: Skiplist/Skiplist.cpp.s
+
+.PHONY : Skiplist/Skiplist.s
+
+# target to generate assembly for a file
+Skiplist/Skiplist.cpp.s:
+	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.s
+.PHONY : Skiplist/Skiplist.cpp.s
 
 main.o: main.cpp.o
 
@@ -213,12 +213,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... GitList"
-	@echo "... AVLTree.o"
-	@echo "... AVLTree.i"
-	@echo "... AVLTree.s"
-	@echo "... SkipList.o"
-	@echo "... SkipList.i"
-	@echo "... SkipList.s"
+	@echo "... AVTree/AVLTree.o"
+	@echo "... AVTree/AVLTree.i"
+	@echo "... AVTree/AVLTree.s"
+	@echo "... Skiplist/Skiplist.o"
+	@echo "... Skiplist/Skiplist.i"
+	@echo "... Skiplist/Skiplist.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

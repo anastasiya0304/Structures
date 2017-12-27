@@ -1,7 +1,6 @@
 #include "Skiplist.h"
 
 
-
 skiplist_node::skiplist_node(int searchKey) {
 
     data.first=searchKey;
@@ -17,6 +16,7 @@ skiplist_node::skiplist_node(std::pair<int,int>newdata):data(newdata) {
 
 }
 
+
 skiplist::skiplist( int minKey, int maxKey):m_pHeader(nullptr),m_pTail(nullptr),
                                   max_curr_level(1),max_level(MAXLEVEL),
                                   m_minKey(minKey),m_maxKey(maxKey) {
@@ -27,6 +27,7 @@ skiplist::skiplist( int minKey, int maxKey):m_pHeader(nullptr),m_pTail(nullptr),
     for ( int i=1; i<=MAXLEVEL; i++ ) { m_pHeader->forwards[i] = m_pTail; }
 
 }
+
 
 skiplist::~skiplist() {
 
@@ -44,6 +45,7 @@ skiplist::~skiplist() {
 
     delete m_pTail;
 }
+
 
 void skiplist::Add(std::pair<int, int> newdata) {
 
@@ -152,6 +154,7 @@ int skiplist::randomLevel() {
 
 }
 
+
 void skiplist::printList(std::ostream &outputstream) {
 
     skiplist_node* currNode = m_pHeader->forwards[1];
@@ -163,6 +166,7 @@ void skiplist::printList(std::ostream &outputstream) {
 
     }
 }
+
 
 int skiplist::Max() {
 
@@ -180,6 +184,7 @@ int skiplist::Max() {
     return max;
 
 };
+
 
 int skiplist::Min() {
 

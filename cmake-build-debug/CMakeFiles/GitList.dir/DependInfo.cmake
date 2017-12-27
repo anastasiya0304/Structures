@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/Vipolion/Documents/Git/AVLTree.cpp" "/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles/GitList.dir/AVLTree.cpp.o"
-  "/Users/Vipolion/Documents/Git/SkipList.cpp" "/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles/GitList.dir/SkipList.cpp.o"
+  "/Users/Vipolion/Documents/Git/AVTree/AVLTree.cpp" "/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o"
+  "/Users/Vipolion/Documents/Git/Skiplist/Skiplist.cpp" "/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o"
   "/Users/Vipolion/Documents/Git/main.cpp" "/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles/GitList.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")

@@ -80,16 +80,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/Vipolion/Documents/Git/AVLTree.cpp">
+		<Unit filename="/Users/Vipolion/Documents/Git/AVTree/AVLTree.cpp">
 			<Option target="GitList"/>
 		</Unit>
-		<Unit filename="/Users/Vipolion/Documents/Git/AVLTree.h">
+		<Unit filename="/Users/Vipolion/Documents/Git/AVTree/AVLTree.h">
 			<Option target="GitList"/>
 		</Unit>
-		<Unit filename="/Users/Vipolion/Documents/Git/SkipList.cpp">
+		<Unit filename="/Users/Vipolion/Documents/Git/Skiplist/Skiplist.cpp">
 			<Option target="GitList"/>
 		</Unit>
-		<Unit filename="/Users/Vipolion/Documents/Git/SkipList.h">
+		<Unit filename="/Users/Vipolion/Documents/Git/Skiplist/Skiplist.h">
 			<Option target="GitList"/>
 		</Unit>
 		<Unit filename="/Users/Vipolion/Documents/Git/main.cpp">

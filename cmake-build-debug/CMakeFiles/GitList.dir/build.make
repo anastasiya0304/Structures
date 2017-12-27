@@ -81,66 +81,66 @@ CMakeFiles/GitList.dir/main.cpp.o.provides: CMakeFiles/GitList.dir/main.cpp.o.re
 CMakeFiles/GitList.dir/main.cpp.o.provides.build: CMakeFiles/GitList.dir/main.cpp.o
 
 
-CMakeFiles/GitList.dir/SkipList.cpp.o: CMakeFiles/GitList.dir/flags.make
-CMakeFiles/GitList.dir/SkipList.cpp.o: ../SkipList.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/GitList.dir/SkipList.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GitList.dir/SkipList.cpp.o -c /Users/Vipolion/Documents/Git/SkipList.cpp
+CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o: CMakeFiles/GitList.dir/flags.make
+CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o: ../Skiplist/Skiplist.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o -c /Users/Vipolion/Documents/Git/Skiplist/Skiplist.cpp
 
-CMakeFiles/GitList.dir/SkipList.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GitList.dir/SkipList.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Vipolion/Documents/Git/SkipList.cpp > CMakeFiles/GitList.dir/SkipList.cpp.i
+CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Vipolion/Documents/Git/Skiplist/Skiplist.cpp > CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.i
 
-CMakeFiles/GitList.dir/SkipList.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GitList.dir/SkipList.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Vipolion/Documents/Git/SkipList.cpp -o CMakeFiles/GitList.dir/SkipList.cpp.s
+CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Vipolion/Documents/Git/Skiplist/Skiplist.cpp -o CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.s
 
-CMakeFiles/GitList.dir/SkipList.cpp.o.requires:
+CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o.requires:
 
-.PHONY : CMakeFiles/GitList.dir/SkipList.cpp.o.requires
+.PHONY : CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o.requires
 
-CMakeFiles/GitList.dir/SkipList.cpp.o.provides: CMakeFiles/GitList.dir/SkipList.cpp.o.requires
-	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/SkipList.cpp.o.provides.build
-.PHONY : CMakeFiles/GitList.dir/SkipList.cpp.o.provides
+CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o.provides: CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o.requires
+	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o.provides.build
+.PHONY : CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o.provides
 
-CMakeFiles/GitList.dir/SkipList.cpp.o.provides.build: CMakeFiles/GitList.dir/SkipList.cpp.o
+CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o.provides.build: CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o
 
 
-CMakeFiles/GitList.dir/AVLTree.cpp.o: CMakeFiles/GitList.dir/flags.make
-CMakeFiles/GitList.dir/AVLTree.cpp.o: ../AVLTree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GitList.dir/AVLTree.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GitList.dir/AVLTree.cpp.o -c /Users/Vipolion/Documents/Git/AVLTree.cpp
+CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o: CMakeFiles/GitList.dir/flags.make
+CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o: ../AVTree/AVLTree.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o -c /Users/Vipolion/Documents/Git/AVTree/AVLTree.cpp
 
-CMakeFiles/GitList.dir/AVLTree.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GitList.dir/AVLTree.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Vipolion/Documents/Git/AVLTree.cpp > CMakeFiles/GitList.dir/AVLTree.cpp.i
+CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/Vipolion/Documents/Git/AVTree/AVLTree.cpp > CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.i
 
-CMakeFiles/GitList.dir/AVLTree.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GitList.dir/AVLTree.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Vipolion/Documents/Git/AVLTree.cpp -o CMakeFiles/GitList.dir/AVLTree.cpp.s
+CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/Vipolion/Documents/Git/AVTree/AVLTree.cpp -o CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.s
 
-CMakeFiles/GitList.dir/AVLTree.cpp.o.requires:
+CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o.requires:
 
-.PHONY : CMakeFiles/GitList.dir/AVLTree.cpp.o.requires
+.PHONY : CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o.requires
 
-CMakeFiles/GitList.dir/AVLTree.cpp.o.provides: CMakeFiles/GitList.dir/AVLTree.cpp.o.requires
-	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/AVLTree.cpp.o.provides.build
-.PHONY : CMakeFiles/GitList.dir/AVLTree.cpp.o.provides
+CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o.provides: CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o.requires
+	$(MAKE) -f CMakeFiles/GitList.dir/build.make CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o.provides.build
+.PHONY : CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o.provides
 
-CMakeFiles/GitList.dir/AVLTree.cpp.o.provides.build: CMakeFiles/GitList.dir/AVLTree.cpp.o
+CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o.provides.build: CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o
 
 
 # Object files for target GitList
 GitList_OBJECTS = \
 "CMakeFiles/GitList.dir/main.cpp.o" \
-"CMakeFiles/GitList.dir/SkipList.cpp.o" \
-"CMakeFiles/GitList.dir/AVLTree.cpp.o"
+"CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o" \
+"CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o"
 
 # External object files for target GitList
 GitList_EXTERNAL_OBJECTS =
 
 GitList: CMakeFiles/GitList.dir/main.cpp.o
-GitList: CMakeFiles/GitList.dir/SkipList.cpp.o
-GitList: CMakeFiles/GitList.dir/AVLTree.cpp.o
+GitList: CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o
+GitList: CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o
 GitList: CMakeFiles/GitList.dir/build.make
 GitList: CMakeFiles/GitList.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Vipolion/Documents/Git/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable GitList"
@@ -152,8 +152,8 @@ CMakeFiles/GitList.dir/build: GitList
 .PHONY : CMakeFiles/GitList.dir/build
 
 CMakeFiles/GitList.dir/requires: CMakeFiles/GitList.dir/main.cpp.o.requires
-CMakeFiles/GitList.dir/requires: CMakeFiles/GitList.dir/SkipList.cpp.o.requires
-CMakeFiles/GitList.dir/requires: CMakeFiles/GitList.dir/AVLTree.cpp.o.requires
+CMakeFiles/GitList.dir/requires: CMakeFiles/GitList.dir/Skiplist/Skiplist.cpp.o.requires
+CMakeFiles/GitList.dir/requires: CMakeFiles/GitList.dir/AVTree/AVLTree.cpp.o.requires
 
 .PHONY : CMakeFiles/GitList.dir/requires
 

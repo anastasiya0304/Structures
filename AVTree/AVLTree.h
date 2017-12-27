@@ -7,11 +7,10 @@
 #include <cassert>
 
 class CAVLTree {
-public:
-    CAVLTree()  {
 
-        root= nullptr;
-    }
+public:
+
+    CAVLTree()  { root= nullptr; }
 
     bool Has( int key );
     void Add( std::pair<int,int> param  );

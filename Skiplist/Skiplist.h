@@ -13,13 +13,12 @@ public:
 
     explicit skiplist_node(int searchKey);
     explicit skiplist_node(std::pair<int,int>newdata);
-    ~skiplist_node() = default;;
+    ~skiplist_node() {};
 
     std::pair<int,int>data;
     skiplist_node* forwards[MAXLEVEL+1];
 
 };
-
 
 
 
