@@ -188,7 +188,7 @@ int skiplist::Max() {
 
 int skiplist::Min() {
 
-    int min = INT_MAX;
+    int min = MAXLEVEL;
     skiplist_node* currNode = m_pHeader;
 
     for(int level=max_curr_level; level >=1; level--) {
