@@ -10,8 +10,8 @@ add 98 13
 add 11 15
 add 24 22
 add 9 54
-add 1254 67
-add 1997 89
+add 125 67
+add 199 89
 add 32 55
 add 54 89
 add 91 11
@@ -26,6 +26,6 @@ add 4 2
 delete 11
 delete 4
 delete 24
-delete 1254
+delete 125
 delete 98
 print
