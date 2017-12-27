@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
             
         }
        
-        if (line.find("search") == 0) {
+        if (line.find("has") == 0) {
            
             fileOut << avlTree.Has(FindKey(line)) << std::endl;
            
@@ -162,7 +162,7 @@ int main(int argc, char *argv[]) {
 
         }
 
-        if (line.find("search") == 0) {
+        if (line.find("has") == 0) {
 
             fileOut << skplist.Has(FindKey(line)) << std::endl;
 
