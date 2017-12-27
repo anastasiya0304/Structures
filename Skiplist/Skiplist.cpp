@@ -52,7 +52,13 @@ void skiplist::Add(std::pair<int, int> newdata) {
     skiplist_node* update[MAXLEVEL];
     skiplist_node* currNode = m_pHeader;
 
-    for(int level=max_curr_level; level >=1; level--) {
+    if (!newdata.first && !newdata.second)
+        return;
+
+    for(int level=max_curr_level; level >= 1; level--) {
+
+        if (!currNode->forwards[level])
+            break;
 
         while ( currNode->forwards[level]->data.first < newdata.first ) { currNode = currNode->forwards[level]; }
 
@@ -78,7 +84,7 @@ void skiplist::Add(std::pair<int, int> newdata) {
 
         currNode = new skiplist_node(newdata);
 
-        for ( int lv=1; lv<=max_curr_level; lv++ ) {
+        for ( int lv=1; lv <= max_curr_level; lv++ ) {
 
             currNode->forwards[lv] = update[lv]->forwards[lv];
             update[lv]->forwards[lv] = currNode;
@@ -170,18 +176,15 @@ void skiplist::printList(std::ostream &outputstream) {
 
 int skiplist::Max() {
 
-    int max = -1;
+//    int max = -1;
     skiplist_node* currNode = m_pHeader;
 
-    for(int level=max_curr_level; level >=1; level--) {
-
-        while ( currNode->forwards[level] ) {
-
-            if ( currNode->data.second > max ){ max = currNode->data.second; }
-        }
+//
+    while (currNode->forwards[1]->forwards[1] != m_pTail) {
+        currNode = currNode->forwards[1];
     }
 
-    return max;
+    return currNode->forwards[1]->data.second;
 
 };
 
@@ -189,18 +192,23 @@ int skiplist::Max() {
 int skiplist::Min() {
 
     int min = MAXLEVEL;
-    skiplist_node* currNode = m_pHeader;
 
-    for(int level=max_curr_level; level >=1; level--) {
 
-        while ( currNode->forwards[level] ) {
+//    for(int level=max_curr_level; level >=1; level--) {
+//
+//        while ( currNode->forwards[level] ) {
+//
+//            if ( currNode->data.second < min ){ min = currNode->data.second; }
+//
+//            else {
+//                currNode = currNode->forwards[level];
+//            }
+//
+//
+//        }
+//    }
 
-            if ( currNode->data.second < min ){ min = currNode->data.second; }
-        }
-    }
-
-    return  min;
+    return  m_pHeader->forwards[1]->data.second;
 
 };
-
 
