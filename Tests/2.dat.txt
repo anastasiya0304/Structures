@@ -3,7 +3,6 @@ add 21 7
 add 65 23
 add 2 18
 add 9 100
-print
 has 2
 has 13
 has 1
