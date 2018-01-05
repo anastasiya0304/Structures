@@ -12,13 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9654c2fc-15a8-49ee-b578-756884dfdaf3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/AVTree/AVLTree.cpp" afterPath="$PROJECT_DIR$/AVTree/AVLTree.cpp" />
       <change beforePath="$PROJECT_DIR$/Skiplist/Skiplist.cpp" afterPath="$PROJECT_DIR$/Skiplist/Skiplist.cpp" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -45,8 +40,8 @@
       <file leaf-file-name="AVLTree.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AVTree/AVLTree.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="288" column="1" lean-forward="true" selection-start-line="288" selection-start-column="1" selection-end-line="288" selection-end-column="1" />
+            <state relative-caret-position="606">
+              <caret line="288" column="3" lean-forward="false" selection-start-line="288" selection-start-column="3" selection-end-line="288" selection-end-column="3" />
               <folding>
                 <element signature="e#1#17#0" expanded="true" />
               </folding>
@@ -57,8 +52,8 @@
       <file leaf-file-name="Skiplist.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Skiplist/Skiplist.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="168" column="44" lean-forward="false" selection-start-line="168" selection-start-column="44" selection-end-line="168" selection-end-column="44" />
+            <state relative-caret-position="238">
+              <caret line="172" column="56" lean-forward="false" selection-start-line="172" selection-start-column="56" selection-end-line="172" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -245,12 +240,12 @@
       <workItem from="1514215868422" duration="12598000" />
       <workItem from="1514309590876" duration="2646000" />
       <workItem from="1514323075222" duration="693000" />
-      <workItem from="1515168434251" duration="1594000" />
+      <workItem from="1515168434251" duration="1822000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20905000" />
+    <option name="totallyTimeSpent" value="21133000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -530,14 +525,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Skiplist/Skiplist.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="168" column="44" lean-forward="false" selection-start-line="168" selection-start-column="44" selection-end-line="168" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -549,10 +536,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Skiplist/Skiplist.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="172" column="56" lean-forward="false" selection-start-line="172" selection-start-column="56" selection-end-line="172" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AVTree/AVLTree.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="288" column="1" lean-forward="true" selection-start-line="288" selection-start-column="1" selection-end-line="288" selection-end-column="1" />
+        <state relative-caret-position="606">
+          <caret line="288" column="3" lean-forward="false" selection-start-line="288" selection-start-column="3" selection-end-line="288" selection-end-column="3" />
           <folding>
             <element signature="e#1#17#0" expanded="true" />
           </folding>

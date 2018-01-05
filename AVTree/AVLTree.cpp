@@ -284,6 +284,8 @@ void CAVLTree::print(std::ostream &outputstream, CAVLTreeNode *node) {
         if (node1->Left != nullptr) { q.push(node1->Left); }
         if (node1->Right != nullptr) { q.push(node1->Right); }
 
+        outputstream << std::endl;
+
     }
 
 }

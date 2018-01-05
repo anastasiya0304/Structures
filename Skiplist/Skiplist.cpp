@@ -170,10 +170,13 @@ void skiplist::printList(std::ostream &outputstream) {
 
         while ( currNode->forwards[lvl] != m_pTail ) {
 
-            outputstream << currNode->data.second << " " << std::endl;
+            outputstream << currNode->data.second << " ";
             currNode = currNode->forwards[lvl];
 
         }
+
+        outputstream  << std::endl;
+
     }
 
 }
