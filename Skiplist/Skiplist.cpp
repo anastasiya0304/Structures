@@ -164,35 +164,36 @@ int skiplist::randomLevel() {
 void skiplist::printList(std::ostream &outputstream) {
 
 
-    for (int lvl = max_curr_level; lvl >= 1 ; --lvl) {
+	for (int lvl = max_curr_level; lvl >= 1; --lvl) {
 
-        skiplist_node* currNode = m_pHeader;
+		skiplist_node* currNode = m_pHeader;
 
-        while ( currNode->forwards[lvl] != m_pTail ) {
+		while (currNode->forwards[lvl] != m_pTail) {
 
-            currNode = currNode->forwards[lvl];
-            outputstream << currNode->data.second << " ";
+			currNode = currNode->forwards[lvl];
+			outputstream << currNode->data.second << " ";
+			
 
-        }
+		}
 
-        outputstream  << std::endl;
+		outputstream << std::endl;
 
-    }
+	}
 
 }
 
 
 int skiplist::Max() {
 
-    skiplist_node* currNode = m_pHeader;
+	skiplist_node* currNode = m_pHeader;
 
-    while (currNode->forwards[1]->forwards[1] != m_pTail) {
+	while (currNode->forwards[1]->forwards[1] != m_pTail) {
 
-        currNode = currNode->forwards[1];
+		currNode = currNode->forwards[1];
 
-    }
+	}
 
-    return currNode->forwards[1]->data.second;
+	return currNode->forwards[1]->data.second;
 
 }
 
