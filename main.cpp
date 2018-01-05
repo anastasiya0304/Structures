@@ -58,6 +58,8 @@ int main(int argc, char *argv[]) {
 
     srand(time(0));
 
+    fileOut << "AVLTree \n";
+    
     while (getline(fileIn, line)) {
 
         if (line.find("delete") == 0) {
@@ -122,15 +124,13 @@ int main(int argc, char *argv[]) {
 
     fileIn.clear();
     fileIn.seekg(0);
-    fileOut.clear();
-    fileOut.seekp(0);
 
-
-
-    skiplist skplist(1,1000);
+    skiplist skplist(1,10000);
 
     srand(time(0));
 
+    fileOut << "SkipList \n";
+    
     while (getline(fileIn, line)) {
 
         if (line.find("delete") == 0) {
@@ -189,6 +189,8 @@ int main(int argc, char *argv[]) {
     }
 
     std::cout << "runtime = " << clock()/1000.0 << std::endl;
+    
+    fileIn.close();
 
     if (FileIsEqual(argv[2], argv[3])) {
 
@@ -199,8 +201,7 @@ int main(int argc, char *argv[]) {
         std::cout << "Not correct" << std::endl;
 
     }
-
-    fileIn.close();
+    
     fileOut.close();
 
     return 0;
