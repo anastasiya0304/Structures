@@ -1,5 +1,6 @@
-
+#include "stdafx.h"
 #include <queue>
+#include <iostream>
 #include "AVLTree.h"
 
 void  CAVLTree::rotateLeft( CAVLTreeNode* node ) {
@@ -271,21 +272,21 @@ void CAVLTree::Print(std::ostream &outputstream) {
 
 void CAVLTree::print(std::ostream &outputstream, CAVLTreeNode *node) {
 
-    if (node == nullptr) { return; }
+	if (node == nullptr) { return; }
 
-    std::queue<CAVLTreeNode*> q;
-    q.push(node);
+	std::queue <CAVLTreeNode*> q;
+	q.push(node);
+	
 
-    while (!q.empty()) {
+	while (!q.empty()) {
 
-        CAVLTreeNode* node1 = q.front();
-        outputstream << node1->pair.second << " ";
+		CAVLTreeNode* node1 = q.front();
+		outputstream << node1->pair.second << " ";
+		q.pop();
 
-        if (node1->Left != nullptr) { q.push(node1->Left); }
-        if (node1->Right != nullptr) { q.push(node1->Right); }
+		if (node1->Left != nullptr) { q.push(node1->Left); }
+		if (node1->Right != nullptr) { q.push(node1->Right); }
 
-        outputstream << std::endl;
-
-    }
+	}
 
 }
