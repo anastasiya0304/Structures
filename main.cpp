@@ -7,7 +7,7 @@
 
 
 int FindKey(const std::string &str) {
-    
+
     std::istringstream iss(str);
     std::string tmp;
     iss >> tmp;
@@ -18,7 +18,7 @@ int FindKey(const std::string &str) {
 }
 
 int FindValue(const std::string &str) {
-    
+
     std::istringstream iss(str);
     std::string tmp;
     iss >> tmp;
@@ -31,7 +31,7 @@ int FindValue(const std::string &str) {
 }
 
 bool FileIsEqual(const std::string &firstFileName, const std::string &secondFileName) {
-    
+
     std::ifstream firstFile(firstFileName), secondFile(secondFileName);
     assert(firstFile);
     assert(secondFile);
@@ -59,60 +59,60 @@ int main(int argc, char *argv[]) {
     srand(time(0));
 
     while (getline(fileIn, line)) {
-      
+
         if (line.find("delete") == 0) {
-            
+
                 if (!avlTree.Remove(FindKey(line))) {
-                    
+
                     fileOut << "error" << std::endl;
-               
+
                 } else {
-                    
+
                     fileOut << "Ok" << std::endl;
                 }
-            
+
         }
-       
+
         if (line == "print") {
-            
+
             avlTree.Print(fileOut);
             fileOut << std::endl;
-        
+
         }
-       
+
         if (line.find("add") == 0) {
-           
+
             std::pair<int,int>ins;
             ins.first=FindKey(line);
             ins.second=FindValue(line);
             avlTree.Add(ins);
-            
+
         }
-       
+
         if (line.find("has") == 0) {
-           
+
             fileOut << avlTree.Has(FindKey(line)) << std::endl;
-           
+
         }
-       
+
         if (line == "min") {
-           
+
             fileOut << avlTree.Min() << std::endl;
-        
+
         }
-       
+
         if (line == "max") {
-       
+
             fileOut << avlTree.Max() << std::endl;
-       
+
         }
-       
+
         if (line == " ") {
-       
+
             fileOut << "error" << std::endl;
-       
+
         }
-    
+
     }
 
     std::cout << "runtime = " << clock()/1000.0 << std::endl;
@@ -125,7 +125,7 @@ int main(int argc, char *argv[]) {
     fileOut.clear();
     fileOut.seekp(0);
 
-    
+
 
     skiplist skplist(1,1000);
 
