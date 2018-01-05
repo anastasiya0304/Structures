@@ -136,7 +136,7 @@ bool skiplist::Has(int searchKey) {
 
     skiplist_node* currNode = m_pHeader;
 
-    for(int level=max_curr_level; level >=1; level--) {
+    for(int level=max_curr_level; level >=1; --level) {
 
         while ( currNode->forwards[level]->data.first < searchKey ) { currNode = currNode->forwards[level]; }
 
@@ -163,50 +163,38 @@ int skiplist::randomLevel() {
 
 void skiplist::printList(std::ostream &outputstream) {
 
-    skiplist_node* currNode = m_pHeader->forwards[1];
 
-    while ( currNode != m_pTail ) {
+    for (int lvl = max_curr_level; lvl >= 1 ; --lvl) {
 
-        outputstream << currNode->data.second << " " << std::endl;
-        currNode = currNode->forwards[1];
+        skiplist_node* currNode = m_pHeader;
 
+        while ( currNode->forwards[lvl] != m_pTail ) {
+
+            outputstream << currNode->data.second << " " << std::endl;
+            currNode = currNode->forwards[lvl];
+
+        }
     }
+
 }
 
 
 int skiplist::Max() {
 
-//    int max = -1;
     skiplist_node* currNode = m_pHeader;
 
-//
     while (currNode->forwards[1]->forwards[1] != m_pTail) {
+
         currNode = currNode->forwards[1];
+
     }
 
     return currNode->forwards[1]->data.second;
 
-};
+}
 
 
 int skiplist::Min() {
-
-    int min = MAXLEVEL;
-
-
-//    for(int level=max_curr_level; level >=1; level--) {
-//
-//        while ( currNode->forwards[level] ) {
-//
-//            if ( currNode->data.second < min ){ min = currNode->data.second; }
-//
-//            else {
-//                currNode = currNode->forwards[level];
-//            }
-//
-//
-//        }
-//    }
 
     return  m_pHeader->forwards[1]->data.second;
 
